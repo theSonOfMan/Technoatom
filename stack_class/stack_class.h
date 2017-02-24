@@ -10,6 +10,7 @@ class Stack{
     bool empty();
     value_type pop();
     bool push(value_type value_to_push);
+    size_t size();
 
     private:
 
@@ -42,4 +43,14 @@ Stack::value_type Stack::pop(){
     value_type top_value;
     top_value = data_[--size_];
     return top_value;
+}
+
+bool Stack::empty(){
+    if (size_==0)
+        return true;
+    return false;
+}
+
+size_t Stack::size(){
+    return size_;
 }

@@ -8,7 +8,8 @@ int main() {
     s1.push(10);
     s1.push(11);
     s1.push(12);
-    float a=s1.pop();
-    cout<<a;
+    while (!s1.empty()){
+        cout<<s1.pop()<< ' ';
+    }
     return 0;
 }
