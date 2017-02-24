@@ -1,3 +1,7 @@
+#define ASSERT_OK()\
+    if (!ok())\
+        assert(!"object is ok");\
+
 class Stack{
     public:
 
@@ -11,6 +15,7 @@ class Stack{
     value_type pop();
     bool push(value_type value_to_push);
     size_t size();
+    bool ok();
 
     private:
 
@@ -22,35 +27,52 @@ class Stack{
 
 Stack::Stack(){
     size_=0;
-    data_[capacity_];
 }
 
 Stack::value_type Stack::top(){
+    ASSERT_OK();
     value_type top_value;
     top_value = data_[size_-1];
+    ASSERT_OK();
     return top_value;
 }
 
 bool Stack::push(value_type value_to_push){
-    if (size_>=capacity_)
+    ASSERT_OK();
+    if (size_>=capacity_) {
+        ASSERT_OK();
         return false;
+    }
     data_[size_]=value_to_push;
     size_++;
+    ASSERT_OK();
     return true;
 }
 
 Stack::value_type Stack::pop(){
+    ASSERT_OK();
     value_type top_value;
     top_value = data_[--size_];
+    ASSERT_OK();
     return top_value;
 }
 
 bool Stack::empty(){
-    if (size_==0)
+    ASSERT_OK();
+    if (size_==0) {
+        ASSERT_OK();
         return true;
+    }
+    ASSERT_OK();
     return false;
 }
 
 size_t Stack::size(){
+    ASSERT_OK();
     return size_;
 }
+
+bool Stack::ok(){
+    return size_<=capacity_;
+}
+
