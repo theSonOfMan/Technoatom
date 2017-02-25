@@ -39,6 +39,10 @@ Stack::Stack(){
 
 Stack::value_type Stack::top(){
     ASSERT_OK();
+    if (this->empty()){
+        ASSERT_OK();
+        return __nan();
+    }
     value_type top_value;
     top_value = data_[size_-1];
     ASSERT_OK();
