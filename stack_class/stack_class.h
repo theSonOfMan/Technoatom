@@ -1,6 +1,9 @@
 #define ASSERT_OK()\
     if (!ok())\
+    {\
+        dump();\
         assert(!"object is ok");\
+    }\
 
 class Stack{
     public:
@@ -16,6 +19,7 @@ class Stack{
     bool push(value_type value_to_push);
     size_t size();
     bool ok();
+    void dump();
 
     private:
 
@@ -51,10 +55,10 @@ bool Stack::push(value_type value_to_push){
 
 Stack::value_type Stack::pop(){
     ASSERT_OK();
-    value_type top_value;
-    top_value = data_[--size_];
+    value_type pop_value;
+    pop_value = data_[--size_];
     ASSERT_OK();
-    return top_value;
+    return pop_value;
 }
 
 bool Stack::empty(){
@@ -76,3 +80,13 @@ bool Stack::ok(){
     return size_<=capacity_;
 }
 
+void Stack::dump(){
+    ofstream dump_file;
+    dump_file.open("/Users/home/Technoatom/stack_class/dump.txt");
+    dump_file<<"size = "<<size_<<endl<<"data:"<<endl;
+    for (int i=0;i<capacity_;i++) {
+        dump_file<<i<<' ';
+        dump_file << data_[i] << endl;
+    }
+    dump_file.close();
+}
