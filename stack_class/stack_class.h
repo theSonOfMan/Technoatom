@@ -1,3 +1,6 @@
+#include <cassert>
+#include <fstream>
+#include <math.h>
 #define ASSERT_OK()\
     if (!ok())\
     {\
@@ -24,6 +27,7 @@ class Stack{
     private:
 
     static const size_t capacity_=6;
+
     value_type data_[capacity_];
     size_t size_;
 
@@ -56,6 +60,10 @@ bool Stack::push(value_type value_to_push){
 Stack::value_type Stack::pop(){
     ASSERT_OK();
     value_type pop_value;
+    if (this->empty()) {
+        ASSERT_OK();
+        return __nan();
+    }
     pop_value = data_[--size_];
     ASSERT_OK();
     return pop_value;

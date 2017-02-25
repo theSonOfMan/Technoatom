@@ -1,6 +1,4 @@
 #include <iostream>
-#include <cassert>
-#include <fstream>
 
 using namespace std;
 #include "stack_class.h"
