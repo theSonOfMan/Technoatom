@@ -1,6 +1,17 @@
+//--------------------------------------
+//!@file stack_class.h
+//Implements a stack class
+//!@author theSonOfMan, 2017
+//--------------------------------------
+
+//--------------------------------------
+//!Stack Class
+//--------------------------------------
+
 #include <cassert>
 #include <fstream>
 #include <math.h>
+
 #define ASSERT_OK()\
     if (!ok())\
     {\
@@ -9,22 +20,35 @@
     }\
 
 class Stack{
-    public:
+        public:
 
     typedef float value_type;
 
     Stack();
     ~Stack(){ }
 
+    //--------------------------------------
+    //!Shows the top value of the stack
+    //!@return top value (NaN if stack is empty)
+    //--------------------------------------
     value_type top();
+
+    //--------------------------------------
+    //!Shows if stack is empty
+    //!@return bool result of an operation (true of false)
+    //--------------------------------------
     bool empty();
+
+    //--------------------------------------
+    //!Pops the value from the Stack
     value_type pop();
     bool push(value_type value_to_push);
     size_t size();
+    size_t capacity();
     bool ok();
     void dump();
 
-    private:
+        private:
 
     static const size_t capacity_=6;
 
@@ -86,6 +110,11 @@ bool Stack::empty(){
 size_t Stack::size(){
     ASSERT_OK();
     return size_;
+}
+
+size_t Stack::capacity() {
+    ASSERT_OK();
+    return capacity_;
 }
 
 bool Stack::ok(){
