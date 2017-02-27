@@ -1,17 +1,16 @@
 //--------------------------------------
 //!@file stack_class.h
-//Implements a stack class
+//!@brief Implements a stack class
 //!@author theSonOfMan, 2017
-//--------------------------------------
-
-//--------------------------------------
-//!Stack Class
 //--------------------------------------
 
 #include <cassert>
 #include <fstream>
 #include <math.h>
 
+//--------------------------------------
+//@def A macro to check if stack isn't damaged by other functions
+//--------------------------------------
 #define ASSERT_OK()\
     if (!ok())\
     {\
@@ -19,13 +18,18 @@
         assert(!"object is ok");\
     }\
 
+//--------------------------------------
+//@class Stack
+//@brief A Stack class
+/*!
+ * A Stack class created by theSonOfMan for Technoatom courses
+ */
+//--------------------------------------
+
 class Stack{
-        public:
+    public:
 
-    typedef float value_type;
-
-    Stack();
-    ~Stack(){ }
+    typedef float value_type;//<type of the value stored in the stack
 
     //--------------------------------------
     //!Shows the top value of the stack
@@ -35,25 +39,48 @@ class Stack{
 
     //--------------------------------------
     //!Shows if stack is empty
-    //!@return bool result of an operation (true of false)
+    //!@return bool-type result of an operation (true of false)
     //--------------------------------------
     bool empty();
 
     //--------------------------------------
-    //!Pops the value from the Stack
+    //!Deletes the top value from the Stack
+    //!@return popped value (NaN if stack is empty)
+    //--------------------------------------
     value_type pop();
-    bool push(value_type value_to_push);
-    size_t size();
-    size_t capacity();
-    bool ok();
-    void dump();
 
-        private:
+    //--------------------------------------
+    //!Pushes the value to the stack
+    //!@param value to be pushed
+    //!@return success of the operation
+    //--------------------------------------
+    bool push(value_type value_to_push);
+
+    //--------------------------------------
+    //!Returns the size of the stack
+    //!@return the size of the stack
+    //--------------------------------------
+    size_t size();
+
+    //--------------------------------------
+    //!Returns the capacity of the stack
+    //!@return the capacity of the stack
+    //--------------------------------------
+    size_t capacity();
+
+    private:
+
+    Stack();
+    ~Stack(){ }
 
     static const size_t capacity_=6;
 
     value_type data_[capacity_];
     size_t size_;
+
+    bool ok();
+    void dump();
+
 
 };
 

@@ -1,3 +1,9 @@
+//--------------------------------------
+//!@file StackTest.cpp
+//!@brief Contains tests for Stack class
+//!@author theSonOfMan, 2017
+//--------------------------------------
+
 #include <iostream>
 using namespace std;
 #include "stack_class.h"
