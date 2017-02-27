@@ -29,6 +29,8 @@
 class Stack{
     public:
 
+    Stack();
+    ~Stack(){ }
     typedef float value_type;//<type of the value stored in the stack
 
     //--------------------------------------
@@ -70,8 +72,6 @@ class Stack{
 
     private:
 
-    Stack();
-    ~Stack(){ }
 
     static const size_t capacity_=6;
 
