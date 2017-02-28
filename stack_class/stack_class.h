@@ -29,9 +29,17 @@
 class Stack{
     public:
 
+    //--------------------------------------
+    //!Standart constructor for Stack class
+    //--------------------------------------
     Stack();
+
+    //--------------------------------------
+    //!Standart destructor for Stack class
+    //--------------------------------------
     ~Stack(){ }
-    typedef float value_type;//<type of the value stored in the stack
+
+    typedef float value_type; //<type of the value stored in the stack
 
     //--------------------------------------
     //!Shows the top value of the stack

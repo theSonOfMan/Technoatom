@@ -10,12 +10,12 @@ using namespace std;
 
 #define TEST(what,case) printf("\nObject: " #what "    test: "#case"\n")
 
-#define ASSERT_EQ(p,eq)\
+#define ASSERT_EQ(p,TestName)\
     if(!p){\
-        assert(!"Object passed the "#eq" test");\
+        assert(!"Object passed the "#TestName" test");\
     }\
     else{\
-        cout<<"Object passed the "#eq " test\n";\
+        cout<<"Object passed the "#TestName " test\n";\
     }
 
 
@@ -34,7 +34,6 @@ int main() {
         for (int i = 0; i < s.capacity(); ++i)
             s.push(46);
         ASSERT_EQ(!s.push(46),CannotPushMore);
-
     }
 
     TEST(Stack,PopFromEmptyStack);
