@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/home/Technoatom/stack_class/StackTest.cpp">
+		<Unit filename="/Users/home/Technoatom/stack_class/main.cpp">
 			<Option target="untitled2"/>
 		</Unit>
 		<Unit filename="/Users/home/Technoatom/stack_class/CMakeLists.txt">

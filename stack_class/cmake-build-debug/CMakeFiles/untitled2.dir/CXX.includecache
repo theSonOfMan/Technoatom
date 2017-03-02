@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/home/Technoatom/stack_class/StackTest.cpp
+/Users/home/Technoatom/stack_class/main.cpp
 iostream
 -
 stack_class.h

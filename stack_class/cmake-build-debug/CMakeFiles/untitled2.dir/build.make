@@ -57,38 +57,38 @@ include CMakeFiles/untitled2.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/untitled2.dir/flags.make
 
-CMakeFiles/untitled2.dir/StackTest.cpp.o: CMakeFiles/untitled2.dir/flags.make
-CMakeFiles/untitled2.dir/StackTest.cpp.o: ../StackTest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/untitled2.dir/StackTest.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled2.dir/StackTest.cpp.o -c /Users/home/Technoatom/stack_class/StackTest.cpp
+CMakeFiles/untitled2.dir/main.cpp.o: CMakeFiles/untitled2.dir/flags.make
+CMakeFiles/untitled2.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/untitled2.dir/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled2.dir/main.cpp.o -c /Users/home/Technoatom/stack_class/main.cpp
 
-CMakeFiles/untitled2.dir/StackTest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled2.dir/StackTest.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/home/Technoatom/stack_class/StackTest.cpp > CMakeFiles/untitled2.dir/StackTest.cpp.i
+CMakeFiles/untitled2.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled2.dir/main.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/home/Technoatom/stack_class/main.cpp > CMakeFiles/untitled2.dir/main.cpp.i
 
-CMakeFiles/untitled2.dir/StackTest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled2.dir/StackTest.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/home/Technoatom/stack_class/StackTest.cpp -o CMakeFiles/untitled2.dir/StackTest.cpp.s
+CMakeFiles/untitled2.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled2.dir/main.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/home/Technoatom/stack_class/main.cpp -o CMakeFiles/untitled2.dir/main.cpp.s
 
-CMakeFiles/untitled2.dir/StackTest.cpp.o.requires:
+CMakeFiles/untitled2.dir/main.cpp.o.requires:
 
-.PHONY : CMakeFiles/untitled2.dir/StackTest.cpp.o.requires
+.PHONY : CMakeFiles/untitled2.dir/main.cpp.o.requires
 
-CMakeFiles/untitled2.dir/StackTest.cpp.o.provides: CMakeFiles/untitled2.dir/StackTest.cpp.o.requires
-	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/StackTest.cpp.o.provides.build
-.PHONY : CMakeFiles/untitled2.dir/StackTest.cpp.o.provides
+CMakeFiles/untitled2.dir/main.cpp.o.provides: CMakeFiles/untitled2.dir/main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/main.cpp.o.provides.build
+.PHONY : CMakeFiles/untitled2.dir/main.cpp.o.provides
 
-CMakeFiles/untitled2.dir/StackTest.cpp.o.provides.build: CMakeFiles/untitled2.dir/StackTest.cpp.o
+CMakeFiles/untitled2.dir/main.cpp.o.provides.build: CMakeFiles/untitled2.dir/main.cpp.o
 
 
 # Object files for target untitled2
 untitled2_OBJECTS = \
-"CMakeFiles/untitled2.dir/StackTest.cpp.o"
+"CMakeFiles/untitled2.dir/main.cpp.o"
 
 # External object files for target untitled2
 untitled2_EXTERNAL_OBJECTS =
 
-untitled2: CMakeFiles/untitled2.dir/StackTest.cpp.o
+untitled2: CMakeFiles/untitled2.dir/main.cpp.o
 untitled2: CMakeFiles/untitled2.dir/build.make
 untitled2: CMakeFiles/untitled2.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable untitled2"
@@ -99,7 +99,7 @@ CMakeFiles/untitled2.dir/build: untitled2
 
 .PHONY : CMakeFiles/untitled2.dir/build
 
-CMakeFiles/untitled2.dir/requires: CMakeFiles/untitled2.dir/StackTest.cpp.o.requires
+CMakeFiles/untitled2.dir/requires: CMakeFiles/untitled2.dir/main.cpp.o.requires
 
 .PHONY : CMakeFiles/untitled2.dir/requires
 

@@ -3,17 +3,14 @@
 //!@brief Contains tests for Stack class
 //!@author theSonOfMan, 2017
 //--------------------------------------
-
 #include <iostream>
 #include "stack_class.h"
 
 #define TEST(what,case) printf("\nObject: " #what "    test: "#case"\n")
 
-// TEST(a == b, c)
-
 
 #ifndef NDEBUG
-#define ASSERT_EQ(p,TestName)\
+#define ASSERT_TEST(p,TestName)\
     if(!p){\
         assert(!"Object passed the "#TestName" test");\
     }\
@@ -21,7 +18,7 @@
         printf("Object passed the "#TestName " test\n");\
     }
 #else
-#define ASSERT_EQ(p,TestName)
+#define ASSERT_TEST(p,TestName)
 #endif
 
 
@@ -30,8 +27,8 @@ int main() {
     TEST(Stack,PushSingleNumber);
     {
         Stack s;
-        ASSERT_EQ(s.push(46),PushSingleNumber);
-        ASSERT_EQ((s.size()==1),SizeCheck);
+        ASSERT_TEST(s.push(46),PushSingleNumber);
+        ASSERT_TEST((s.size()==1),SizeCheck);
     }
 
     TEST(Stack,CannotPushMore);
@@ -39,29 +36,29 @@ int main() {
         Stack s;
         for (int i = 0; i < s.capacity(); ++i)
             s.push(46);
-        ASSERT_EQ(!s.push(46),CannotPushMore);
+        ASSERT_TEST(!s.push(46),CannotPushMore);
     }
 
     TEST(Stack,PopFromEmptyStack);
     {
         Stack s;
-        ASSERT_EQ(isnan(s.pop()),PopFromEmptyStack);
+        ASSERT_TEST(isnan(s.pop()),PopFromEmptyStack);
         s.push(46);
         s.pop();
-        ASSERT_EQ(isnan(s.pop()),PopFromEmptyStack);
+        ASSERT_TEST(isnan(s.pop()),PopFromEmptyStack);
     }
 
     TEST(Stack,TopFromEmptyStack);
     {
         Stack s;
-        ASSERT_EQ(isnan(s.top()),TopFromEmptyStack);
+        ASSERT_TEST(isnan(s.top()),TopFromEmptyStack);
     }
 
     TEST(Stack,PopSingleNumber);
     {
         Stack s;
         s.push(46);
-        ASSERT_EQ(!isnan(s.pop()),PopSingleNumber);
+        ASSERT_TEST(!isnan(s.pop()),PopSingleNumber);
     }
 
     TEST(Stack,CannotPopMore);
@@ -72,6 +69,6 @@ int main() {
             s.pop();
         }
 
-        ASSERT_EQ(isnan(s.pop()),CannotPopMore);
+        ASSERT_TEST(isnan(s.pop()),CannotPopMore);
     }
 }

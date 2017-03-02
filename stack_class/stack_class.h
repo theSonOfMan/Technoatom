@@ -3,30 +3,29 @@
 //!@brief Implements a stack class
 //!@author theSonOfMan, 2017
 //--------------------------------------
-
 #include <cassert>
 #include <fstream>
 #include <math.h>
+
 using std::ofstream;
 using std::endl;
-//--------------------------------------
-//@def A macro to check if stack isn't damaged by other functions
-//--------------------------------------
+using std::to_string;
+using std::cout;
+
 #define ASSERT_OK()\
-    if (!ok())\
-    {\
-        dump();\
-        assert(!"object is ok");\
-    }
+    do{\
+       if (!ok())\
+           {\
+               DUMP_OUTPUT\
+                assert(!"object is ok");\
+           }\
+    } while (!ok());
 
-//__LINE__ __FUNCTION__ __FILE__
+#define DUMP_OUTPUT \
+    cout<<"file: "<<__FILE__<<endl;\
+    cout<<"line: "<<__LINE__<<endl;\
+    cout<<"function: "<<__FUNCTION__<<endl;\
 
-// FIXME: рассмотри пример:
-// if(a)
-//    ASSERT_OK()
-// else {
-// }
-// do { } while()
 
 //--------------------------------------
 //@class Stack
@@ -76,7 +75,8 @@ class Stack{
     //!@return success of the operation
     //--------------------------------------
     bool push(const value_type& value_to_push);
-    // FIXME: Используй константный указатель
+    // FIXME: Используй константный указатель - сделано
+    //
 
     //--------------------------------------
     //!Returns the size of the stack
@@ -92,6 +92,11 @@ class Stack{
 
     bool ok();
     void dump();
+
+    void assert_test(){
+        size_=capacity_+1;
+        ASSERT_OK();
+    }
 
     private:
 
@@ -168,12 +173,8 @@ bool Stack::ok(){
 }
 
 void Stack::dump(){
-    ofstream dump_file;
-    dump_file.open("/Users/home/Technoatom/stack_class/dump.txt");
-    dump_file<<"size = "<<size_<<endl<<"data:"<<endl;
-    for (int i=0;i<capacity_;i++) {
-        dump_file<<i<<' ';
-        dump_file << data_[i] << endl;
+    cout<<"size = "<<size_<<endl<<"data:"<<endl;
+    for (size_t inc; inc < capacity_; inc++){
+        cout<<inc<<":  "<<data_[inc]<<endl;
     }
-    dump_file.close();
 }

@@ -123,32 +123,32 @@ untitled2/fast:
 	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/build
 .PHONY : untitled2/fast
 
-StackTest.o: StackTest.cpp.o
+main.o: main.cpp.o
 
-.PHONY : StackTest.o
+.PHONY : main.o
 
 # target to build an object file
-StackTest.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/StackTest.cpp.o
-.PHONY : StackTest.cpp.o
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-StackTest.i: StackTest.cpp.i
+main.i: main.cpp.i
 
-.PHONY : StackTest.i
+.PHONY : main.i
 
 # target to preprocess a source file
-StackTest.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/StackTest.cpp.i
-.PHONY : StackTest.cpp.i
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-StackTest.s: StackTest.cpp.s
+main.s: main.cpp.s
 
-.PHONY : StackTest.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-StackTest.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/StackTest.cpp.s
-.PHONY : StackTest.cpp.s
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... untitled2"
-	@echo "... StackTest.o"
-	@echo "... StackTest.i"
-	@echo "... StackTest.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
