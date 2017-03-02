@@ -38,7 +38,7 @@ int main() {
             s.push(46);
         ASSERT_TEST(!s.push(46),CannotPushMore);
     }
-
+//TODO  передалать тест
     TEST(Stack,PopFromEmptyStack);
     {
         Stack s;
@@ -47,20 +47,20 @@ int main() {
         s.pop();
         ASSERT_TEST(isnan(s.pop()),PopFromEmptyStack);
     }
-
+//TODO  передалать тест
     TEST(Stack,TopFromEmptyStack);
     {
         Stack s;
         ASSERT_TEST(isnan(s.top()),TopFromEmptyStack);
     }
-
+//TODO  передалать тест
     TEST(Stack,PopSingleNumber);
     {
         Stack s;
         s.push(46);
         ASSERT_TEST(!isnan(s.pop()),PopSingleNumber);
     }
-
+//TODO  передалать тест
     TEST(Stack,CannotPopMore);
     {
         Stack s;

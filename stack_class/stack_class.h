@@ -52,9 +52,10 @@ class Stack{
 
     //--------------------------------------
     //!Shows the top value of the stack
-    //!@return top value (NaN if stack is empty)
+    //!@param variable which can contain the top value
+    //!@return success of the operation
     //--------------------------------------
-    value_type top();
+    bool top(value_type& top_value);
 
     //--------------------------------------
     //!Shows if stack is empty
@@ -64,10 +65,11 @@ class Stack{
 
     //--------------------------------------
     //!Deletes the top value from the Stack
-    //!@return popped value (NaN if stack is empty)
+    //!@param variable which can contain the popped value
+    //!@return success of the operation
     //--------------------------------------
-    value_type pop();
-    // FIXME: Корректно обработать эту ситуацию для разных типов
+    bool pop();
+    // FIXME: Корректно обработать эту ситуацию для разных типов - сделано
 
     //--------------------------------------
     //!Pushes the value to the stack
@@ -112,16 +114,15 @@ Stack::Stack(){
     size_=0;
 }
 
-Stack::value_type Stack::top(){
+bool Stack::top(value_type &top_value){
     ASSERT_OK();
     if (this->empty()){
         ASSERT_OK();
-        return __nan();
+        return false;
     }
-    value_type top_value;
     top_value = data_[size_-1];
     ASSERT_OK();
-    return top_value;
+    return true;
 }
 
 bool Stack::push(const value_type& value_to_push){
@@ -136,16 +137,13 @@ bool Stack::push(const value_type& value_to_push){
     return true;
 }
 
-Stack::value_type Stack::pop(){
+bool Stack::pop(){
     ASSERT_OK();
-    value_type pop_value;
-    if (this->empty()) {
-        ASSERT_OK();
-        return __nan();
-    }
-    pop_value = data_[--size_];
+    if (this->empty())
+        return false;
+    --size_;
     ASSERT_OK();
-    return pop_value;
+    return true;
 }
 
 bool Stack::empty(){
