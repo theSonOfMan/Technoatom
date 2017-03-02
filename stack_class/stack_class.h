@@ -7,7 +7,8 @@
 #include <cassert>
 #include <fstream>
 #include <math.h>
-
+using std::ofstream;
+using std::endl;
 //--------------------------------------
 //@def A macro to check if stack isn't damaged by other functions
 //--------------------------------------
@@ -16,7 +17,16 @@
     {\
         dump();\
         assert(!"object is ok");\
-    }\
+    }
+
+//__LINE__ __FUNCTION__ __FILE__
+
+// FIXME: рассмотри пример:
+// if(a)
+//    ASSERT_OK()
+// else {
+// }
+// do { } while()
 
 //--------------------------------------
 //@class Stack
@@ -58,13 +68,15 @@ class Stack{
     //!@return popped value (NaN if stack is empty)
     //--------------------------------------
     value_type pop();
+    // FIXME: Корректно обработать эту ситуацию для разных типов
 
     //--------------------------------------
     //!Pushes the value to the stack
     //!@param value to be pushed
     //!@return success of the operation
     //--------------------------------------
-    bool push(value_type value_to_push);
+    bool push(const value_type& value_to_push);
+    // FIXME: Используй константный указатель
 
     //--------------------------------------
     //!Returns the size of the stack
@@ -78,16 +90,15 @@ class Stack{
     //--------------------------------------
     size_t capacity();
 
-    private:
-
-
-    static const size_t capacity_=6;
-
-    value_type data_[capacity_];
-    size_t size_;
-
     bool ok();
     void dump();
+
+    private:
+
+    static const size_t capacity_=6;
+    value_type data_[capacity_];
+
+    size_t size_;
 
 
 };
@@ -108,7 +119,7 @@ Stack::value_type Stack::top(){
     return top_value;
 }
 
-bool Stack::push(value_type value_to_push){
+bool Stack::push(const value_type& value_to_push){
     ASSERT_OK();
     if (size_>=capacity_) {
         ASSERT_OK();

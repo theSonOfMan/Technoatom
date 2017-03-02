@@ -5,18 +5,24 @@
 //--------------------------------------
 
 #include <iostream>
-using namespace std;
 #include "stack_class.h"
 
 #define TEST(what,case) printf("\nObject: " #what "    test: "#case"\n")
 
+// TEST(a == b, c)
+
+
+#ifndef NDEBUG
 #define ASSERT_EQ(p,TestName)\
     if(!p){\
         assert(!"Object passed the "#TestName" test");\
     }\
     else{\
-        cout<<"Object passed the "#TestName " test\n";\
+        printf("Object passed the "#TestName " test\n");\
     }
+#else
+#define ASSERT_EQ(p,TestName)
+#endif
 
 
 int main() {

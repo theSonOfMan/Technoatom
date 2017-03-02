@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/home/Technoatom/stack_class/StackTest.cpp
+iostream
+-
+stack_class.h
+/Users/home/Technoatom/stack_class/stack_class.h
+
+/Users/home/Technoatom/stack_class/stack_class.h
+cassert
+-
+fstream
+-
+math.h
+-
+
