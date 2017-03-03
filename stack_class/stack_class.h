@@ -8,6 +8,8 @@
 #include <math.h>
 #include <sstream>
 #include <ctime>
+#include <stdio.h>
+#include <stdlib.h>
 
 using std::ofstream;
 using std::endl;
@@ -16,8 +18,8 @@ using std::cout;
 using std::ostringstream;
 using std::string;
 
-#define CONSOLE_OUTPUT 1
-#define FILE_OUTPUT 0
+#define CONSOLE_OUTPUT 0
+#define FILE_OUTPUT 1
 
 #define DUMP_CREATION \
     ostringstream dump_string;\
@@ -39,18 +41,14 @@ using std::string;
 
 #define ASSERT_OK()\
 do{\
-    if (!ok())\
-    {\
-        DUMP_CREATION \
-        ostringstream file_path;\
-        file_path<<"/Users/home/Technoatom/stack_class/dump";\
-        file_path<<time(NULL)<<".txt";\
-        ofstream fout(file_path.str());\
-        fout<<dump_string.str();\
-        cout<<"dump worked";\
-        assert(!"object is ok");\
+    if (!ok()) {\
+        DUMP_CREATION\
+        DUMP_OUTPUT\
     }\
-} while (!ok());
+    else {}\
+    if(!ok())\
+        assert(false);\
+} while (false);
 //--------------------------------------
 //@class Stack
 //@brief A Stack class

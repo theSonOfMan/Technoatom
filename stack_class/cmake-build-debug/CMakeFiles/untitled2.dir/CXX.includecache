@@ -23,4 +23,8 @@ sstream
 -
 ctime
 -
+stdio.h
+-
+stdlib.h
+-
 
