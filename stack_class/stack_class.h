@@ -6,27 +6,51 @@
 #include <cassert>
 #include <fstream>
 #include <math.h>
+#include <sstream>
+#include <ctime>
 
 using std::ofstream;
 using std::endl;
 using std::to_string;
 using std::cout;
+using std::ostringstream;
+using std::string;
+
+#define CONSOLE_OUTPUT 1
+#define FILE_OUTPUT 0
+
+#define DUMP_CREATION \
+    ostringstream dump_string;\
+    dump_string<<"file: "<<__FILE__<<endl;\
+    dump_string<<"line: "<<__LINE__<<endl;\
+    dump_string<<"function: "<<__FUNCTION__<<endl;
+
+#if CONSOLE_OUTPUT
+#define DUMP_OUTPUT \
+    cout<<dump_string.str();
+#elif FILE_OUTPUT
+#define DUMP_OUTPUT \
+    ostringstream file_path;\
+    file_path<<"/Users/home/Technoatom/stack_class/dump";\
+    file_path<<time(NULL)<<".txt";\
+    ofstream fout(file_path.str());\
+    fout<<dump_string.str();
+#endif
 
 #define ASSERT_OK()\
-    do{\
-       if (!ok())\
-           {\
-               DUMP_OUTPUT\
-                assert(!"object is ok");\
-           }\
-    } while (!ok());
-
-#define DUMP_OUTPUT \
-    cout<<"file: "<<__FILE__<<endl;\
-    cout<<"line: "<<__LINE__<<endl;\
-    cout<<"function: "<<__FUNCTION__<<endl;\
-
-
+do{\
+    if (!ok())\
+    {\
+        DUMP_CREATION \
+        ostringstream file_path;\
+        file_path<<"/Users/home/Technoatom/stack_class/dump";\
+        file_path<<time(NULL)<<".txt";\
+        ofstream fout(file_path.str());\
+        fout<<dump_string.str();\
+        cout<<"dump worked";\
+        assert(!"object is ok");\
+    }\
+} while (!ok());
 //--------------------------------------
 //@class Stack
 //@brief A Stack class
@@ -56,6 +80,7 @@ class Stack{
     //!@return success of the operation
     //--------------------------------------
     bool top(value_type& top_value);
+    //TODO: возвращает нулевой указатель NULL.
 
     //--------------------------------------
     //!Shows if stack is empty
@@ -69,7 +94,6 @@ class Stack{
     //!@return success of the operation
     //--------------------------------------
     bool pop();
-    // FIXME: Корректно обработать эту ситуацию для разных типов - сделано
 
     //--------------------------------------
     //!Pushes the value to the stack
@@ -77,8 +101,6 @@ class Stack{
     //!@return success of the operation
     //--------------------------------------
     bool push(const value_type& value_to_push);
-    // FIXME: Используй константный указатель - сделано
-    //
 
     //--------------------------------------
     //!Returns the size of the stack
