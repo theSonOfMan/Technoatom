@@ -25,7 +25,8 @@ using std::string;
     ostringstream dump_string;\
     dump_string<<"file: "<<__FILE__<<endl;\
     dump_string<<"line: "<<__LINE__<<endl;\
-    dump_string<<"function: "<<__FUNCTION__<<endl;
+    dump_string<<"function: "<<__FUNCTION__<<endl;\
+    dump_string<<dump()<<endl;
 
 #if CONSOLE_OUTPUT
 #define DUMP_OUTPUT \
@@ -45,7 +46,7 @@ do{\
         DUMP_CREATION\
         DUMP_OUTPUT\
     }\
-    else {}\
+    else {/*Написать эту ересь было хорошо обдуманным решением. Простите нас. Пожалуйста*/}\
     if(!ok())\
         assert(false);\
 } while (false);
@@ -53,7 +54,7 @@ do{\
 //@class Stack
 //@brief A Stack class
 /*!
- * A Stack class created by theSonOfMan for Technoatom courses
+ *!A Stack class created by theSonOfMan for Technoatom courses
  */
 //--------------------------------------
 
@@ -113,7 +114,7 @@ class Stack{
     size_t capacity();
 
     bool ok();
-    void dump();
+    std::string dump();
 
     void assert_test(){
         size_=capacity_+1;
@@ -190,9 +191,11 @@ bool Stack::ok(){
     return size_<=capacity_;
 }
 
-void Stack::dump(){
-    cout<<"size = "<<size_<<endl<<"data:"<<endl;
-    for (size_t inc; inc < capacity_; inc++){
-        cout<<inc<<":  "<<data_[inc]<<endl;
+std::string Stack::dump(){
+    ostringstream out_string;
+    out_string<<"size: "<<size_<<endl;
+    for (int i=0;i<size_;i++){
+        out_string<<i<<": "<<data_[i]<<endl;
     }
+    return out_string.str();
 }
