@@ -1,0 +1,3 @@
+file: /Users/home/Technoatom/stack_class/stack_class.h
+line: 120
+function: assert_test
