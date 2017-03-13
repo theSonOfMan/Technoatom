@@ -1,0 +1,17 @@
+file: /Users/home/Technoatom/vector_class/vector_class.cpp
+line: 36
+function: Vector
+size: 10
+data pointer: 0x7fdfc8c02980
+data:
+0:0
+1:1073741824
+2:0
+3:1073741824
+4:4
+5:0
+6:0
+7:0
+8:0
+9:0
+

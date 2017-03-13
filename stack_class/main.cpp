@@ -5,6 +5,8 @@ using namespace std;
 
 int main() {
    Stack s;
-    s.assert_test();
+    s.push(10);
+    cout<<s.top()<<endl;
+    cout<<*(s.top());
     return 0;
 }

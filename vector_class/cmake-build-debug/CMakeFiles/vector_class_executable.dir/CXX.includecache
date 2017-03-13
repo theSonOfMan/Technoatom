@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/home/Technoatom/vector_class/vector_class.h
+iostream
+-
+
+/Users/home/Technoatom/vector_class/vector_test.cpp
+iostream
+-
+vector_class.h
+/Users/home/Technoatom/vector_class/vector_class.h
+cassert
+-
+ctime
+-
+

@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/home/Technoatom/my_dump.h
+ctime
+-
+cassert
+-
+sstream
+-
+fstream
+-
+
+/Users/home/Technoatom/stack_class/StackTest.cpp
+iostream
+-
+stack_class.h
+/Users/home/Technoatom/stack_class/stack_class.h
+cassert
+-
+
+/Users/home/Technoatom/stack_class/stack_class.h
+fstream
+-
+math.h
+-
+sstream
+-
+stdio.h
+-
+stdlib.h
+-
+cassert
+-
+/Users/home/Technoatom/my_dump.h
+-
+

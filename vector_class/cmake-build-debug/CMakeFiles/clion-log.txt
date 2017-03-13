@@ -1,0 +1,4 @@
+/Applications/JetBrains/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/home/Technoatom/vector_class
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/home/Technoatom/vector_class/cmake-build-debug

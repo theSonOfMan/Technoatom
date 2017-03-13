@@ -111,44 +111,84 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named untitled2
+# Target rules for targets named stack_class_executable
 
 # Build rule for target.
-untitled2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 untitled2
-.PHONY : untitled2
+stack_class_executable: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stack_class_executable
+.PHONY : stack_class_executable
 
 # fast build rule for target.
-untitled2/fast:
-	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/build
-.PHONY : untitled2/fast
+stack_class_executable/fast:
+	$(MAKE) -f CMakeFiles/stack_class_executable.dir/build.make CMakeFiles/stack_class_executable.dir/build
+.PHONY : stack_class_executable/fast
 
-main.o: main.cpp.o
+#=============================================================================
+# Target rules for targets named stack_class_lib
 
-.PHONY : main.o
+# Build rule for target.
+stack_class_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stack_class_lib
+.PHONY : stack_class_lib
+
+# fast build rule for target.
+stack_class_lib/fast:
+	$(MAKE) -f CMakeFiles/stack_class_lib.dir/build.make CMakeFiles/stack_class_lib.dir/build
+.PHONY : stack_class_lib/fast
+
+StackTest.o: StackTest.cpp.o
+
+.PHONY : StackTest.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/main.cpp.o
-.PHONY : main.cpp.o
+StackTest.cpp.o:
+	$(MAKE) -f CMakeFiles/stack_class_executable.dir/build.make CMakeFiles/stack_class_executable.dir/StackTest.cpp.o
+.PHONY : StackTest.cpp.o
 
-main.i: main.cpp.i
+StackTest.i: StackTest.cpp.i
 
-.PHONY : main.i
+.PHONY : StackTest.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/main.cpp.i
-.PHONY : main.cpp.i
+StackTest.cpp.i:
+	$(MAKE) -f CMakeFiles/stack_class_executable.dir/build.make CMakeFiles/stack_class_executable.dir/StackTest.cpp.i
+.PHONY : StackTest.cpp.i
 
-main.s: main.cpp.s
+StackTest.s: StackTest.cpp.s
 
-.PHONY : main.s
+.PHONY : StackTest.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled2.dir/build.make CMakeFiles/untitled2.dir/main.cpp.s
-.PHONY : main.cpp.s
+StackTest.cpp.s:
+	$(MAKE) -f CMakeFiles/stack_class_executable.dir/build.make CMakeFiles/stack_class_executable.dir/StackTest.cpp.s
+.PHONY : StackTest.cpp.s
+
+stack_class.o: stack_class.cpp.o
+
+.PHONY : stack_class.o
+
+# target to build an object file
+stack_class.cpp.o:
+	$(MAKE) -f CMakeFiles/stack_class_lib.dir/build.make CMakeFiles/stack_class_lib.dir/stack_class.cpp.o
+.PHONY : stack_class.cpp.o
+
+stack_class.i: stack_class.cpp.i
+
+.PHONY : stack_class.i
+
+# target to preprocess a source file
+stack_class.cpp.i:
+	$(MAKE) -f CMakeFiles/stack_class_lib.dir/build.make CMakeFiles/stack_class_lib.dir/stack_class.cpp.i
+.PHONY : stack_class.cpp.i
+
+stack_class.s: stack_class.cpp.s
+
+.PHONY : stack_class.s
+
+# target to generate assembly for a file
+stack_class.cpp.s:
+	$(MAKE) -f CMakeFiles/stack_class_lib.dir/build.make CMakeFiles/stack_class_lib.dir/stack_class.cpp.s
+.PHONY : stack_class.cpp.s
 
 # Help Target
 help:
@@ -158,10 +198,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... untitled2"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... stack_class_executable"
+	@echo "... stack_class_lib"
+	@echo "... StackTest.o"
+	@echo "... StackTest.i"
+	@echo "... StackTest.s"
+	@echo "... stack_class.o"
+	@echo "... stack_class.i"
+	@echo "... stack_class.s"
 .PHONY : help
 
 

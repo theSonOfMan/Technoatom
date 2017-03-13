@@ -1,3 +1,4 @@
 /Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles/untitled2.dir
+/Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles/stack_class_executable.dir
+/Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles/stack_class_lib.dir
