@@ -9,6 +9,8 @@
 #include <cassert>
 #include <ctime>
 
+// FIXME: вынеси эти макросы в библиотеку my_test.h
+
 #define TEST(what,case) printf("\nObject: " #what "    test: "#case"\n");
 
 
@@ -23,6 +25,8 @@
 #else
 #define ASSERT_TEST(p,TestName)
 #endif
+
+// FIXME: не хватает теста на базовые операции добавления/извлечения элементов.
 
 int main (){
 
