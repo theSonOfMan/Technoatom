@@ -7,6 +7,19 @@
 #define DEBUG
 //#define LOG_VERBOSITY
 
+// FIXME: я не совсем это имел ввиду. У тебя же есть файл my_dump.h. В этом файле есть ASSERT_OK, который выводит какую-то
+// информацию куда-то. Логично там же завести макрос LOG_PRINT, который ничего не проверяет, а просто печатает на экран какую-то информацию.
+// А потом уже ты юудешь писать в коде что-то типа: LOG_PRINT("Я родился в участве памяти"). Если хочешь, можешь это сделать
+// строковой константой. Но не надо специально под это делать свой макрос.
+// Что касается LOG_VERBOSITY, я имел ввиду несколько уровней важности: типа ERROR, WARNING, DEBUG, INFO, VERBOS. ПРи каждом вызове
+// LOG_PRINT можно указывать уровень важности. А выводиться будут только сообщения с важностью больше, чем важность, лежащаяя
+// в константе LOG_VERBOSITY.
+
+// FIXME: опасный макрос. Сразу по нескольким причинам:
+// 1) Представь себе код LOG_PRINT(a += b), где a и b - это какие-то строки. В итоге b прибавиться к а 3 раза.
+// 2) Представь себе код if(a) LOG_PRINT(...)
+//                       f()
+// Если не DEBUG, то f() будет вызвана только при условии а.
 #ifdef DEBUG
 #ifdef LOG_VERBOSITY
 #define LOG_PRINT(INFO, VAR) \
@@ -15,7 +28,7 @@
             std::cout<<"Я родился в участке памяти "<<VAR<<std::endl;\
             getchar();\
         }\
-    if (INFO == "BIRTH")\
+    if (INFO == "BIRTH")\ 
         {\
             std::cout<<"Я умер в участке памяти "<<VAR<<std::endl;\
             getchar();\
@@ -43,8 +56,9 @@ template <typename T>
 Vector<T>::Vector(size_t vector_size): size_(vector_size){
     data_ = new value_type[size_];
     ASSERT_OK(data_ != NULL)
-    for (int i=0; i<size_; i++)
-        data_[i]=0;
+    for (int i=0; i<size_; i++) // FIXME: size_ имеет тип size_t и вмещает в себя числа <= 2^64. int же только до 2^31, т.е. всего миллион и его может не хватить.
+        data_[i]=0; // FIXME: а еще не факт, что у твоего T есть какой-то ноль. Лучше сделать = T(), что вызовет либо конструктор по
+    // умолчению, либо инициализатор для базовых типов.
     LOG_PRINT("BIRTH", this);
 }
 
@@ -166,6 +180,7 @@ const std::string Vector<T>::dump() const{
     return out_string.str();
 }
 
+// FIXME: а резве эта функция не объявлена в my_dump?
 template <typename T>
 std::string Vector<T>::print_data_filename() const{
     ostringstream file_path;
