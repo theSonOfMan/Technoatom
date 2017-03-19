@@ -6,11 +6,15 @@
 
 #pragma once
 #include <iostream>
+#include "../my_dump.h"
+#include <stdlib.h>
+#include <fstream>
 
+template <typename T>
 class Vector{
 public:
 
-    typedef int value_type; //<type of the value stored in Vector
+    typedef T value_type; //<type of the value stored in Vector
 
     //--------------------------------------
     //! Constructor, standard constructor for Vector class
@@ -45,7 +49,14 @@ public:
     //! \param that - a vector to be copied
     //! \return a copied vector
     //--------------------------------------
-    const Vector& operator = (const Vector&that);
+    const Vector<T>& operator = (const Vector<T>&that);
+
+    //--------------------------------------
+    //! A copy operator for a constant vector object
+    //! \param index - index of an element to return
+    //! \return the element
+    //--------------------------------------
+    const value_type& operator [] (size_t index) const;
 
     //--------------------------------------
     //! A operator, which returns a particular element of a vector
@@ -69,7 +80,7 @@ public:
     //--------------------------------------
     //! Prints the data of the vector in console
     //--------------------------------------
-    void print_data();
+    void print_data() const;
 
     //--------------------------------------
     //! Returns information about the vector
@@ -77,11 +88,21 @@ public:
     //--------------------------------------
     std::string dump();
 
+    //--------------------------------------
+    //! Returns information about the constant vector object
+    //! \return a string, which contains the information
+    //--------------------------------------
+    const std::string dump() const;
+
 private:
 
     size_t size_;
     value_type *data_;
 
+    std::string print_data_filename() const;
+
     void*operator new (size_t size, void* where_to_create);
 
 };
+
+#include "vector_class.hpp"

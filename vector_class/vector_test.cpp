@@ -3,6 +3,7 @@
 //! \brief Contains tests for vector class
 //! \author theSonOfMan, 2017
 //--------------------------------------
+
 #include <iostream>
 #include "vector_class.h"
 #include <cassert>
@@ -29,20 +30,20 @@ int main (){
 
     TEST (Vector, NewMemoryAllocated)
     {
-        Vector vect1;
+        Vector<int> vect1;
         ASSERT_TEST(vect1.data_pointer() != NULL);
 
-        Vector vect2(46);
+        Vector<int> vect2(46);
         ASSERT_TEST(vect2.data_pointer() != NULL);
 
-        Vector copy_of_vect2 = vect2;
+        Vector<int> copy_of_vect2 = vect2;
         ASSERT_TEST(copy_of_vect2.data_pointer() != NULL);
     }
 
     TEST(Vector, SwapTest)
     {
-        Vector vect1;
-        Vector vect2(46);
+        Vector<int> vect1;
+        Vector<int> vect2(46);
         vect2[0]=46;
 
         vect1.swap(vect2);
@@ -52,8 +53,8 @@ int main (){
 
     TEST(Vector, CopyTest)
     {
-        Vector vect1;
-        Vector vect2(46);
+        Vector<int> vect1;
+        Vector<int> vect2(46);
 
         for (int i=0; i<vect2.size(); i++){
             vect2[i] = rand();
@@ -69,6 +70,6 @@ int main (){
 
         ASSERT_TEST(p);
     }
-    
+
     return 0;
 }

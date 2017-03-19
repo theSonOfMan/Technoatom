@@ -6,23 +6,3 @@
 
 #IncludeRegexTransform: 
 
-/Users/home/Technoatom/my_dump.h
-ctime
--
-cassert
--
-sstream
--
-fstream
--
-
-/Users/home/Technoatom/vector_class/vector_class.cpp
-vector_class.h
-/Users/home/Technoatom/vector_class/vector_class.h
-../my_dump.h
-/Users/home/Technoatom/my_dump.h
-
-/Users/home/Technoatom/vector_class/vector_class.h
-iostream
--
-

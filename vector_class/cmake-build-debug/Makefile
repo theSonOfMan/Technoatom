@@ -123,46 +123,6 @@ vector_class_executable/fast:
 	$(MAKE) -f CMakeFiles/vector_class_executable.dir/build.make CMakeFiles/vector_class_executable.dir/build
 .PHONY : vector_class_executable/fast
 
-#=============================================================================
-# Target rules for targets named vector_class_library
-
-# Build rule for target.
-vector_class_library: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vector_class_library
-.PHONY : vector_class_library
-
-# fast build rule for target.
-vector_class_library/fast:
-	$(MAKE) -f CMakeFiles/vector_class_library.dir/build.make CMakeFiles/vector_class_library.dir/build
-.PHONY : vector_class_library/fast
-
-vector_class.o: vector_class.cpp.o
-
-.PHONY : vector_class.o
-
-# target to build an object file
-vector_class.cpp.o:
-	$(MAKE) -f CMakeFiles/vector_class_library.dir/build.make CMakeFiles/vector_class_library.dir/vector_class.cpp.o
-.PHONY : vector_class.cpp.o
-
-vector_class.i: vector_class.cpp.i
-
-.PHONY : vector_class.i
-
-# target to preprocess a source file
-vector_class.cpp.i:
-	$(MAKE) -f CMakeFiles/vector_class_library.dir/build.make CMakeFiles/vector_class_library.dir/vector_class.cpp.i
-.PHONY : vector_class.cpp.i
-
-vector_class.s: vector_class.cpp.s
-
-.PHONY : vector_class.s
-
-# target to generate assembly for a file
-vector_class.cpp.s:
-	$(MAKE) -f CMakeFiles/vector_class_library.dir/build.make CMakeFiles/vector_class_library.dir/vector_class.cpp.s
-.PHONY : vector_class.cpp.s
-
 vector_test.o: vector_test.cpp.o
 
 .PHONY : vector_test.o
@@ -199,10 +159,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vector_class_executable"
-	@echo "... vector_class_library"
-	@echo "... vector_class.o"
-	@echo "... vector_class.i"
-	@echo "... vector_class.s"
 	@echo "... vector_test.o"
 	@echo "... vector_test.i"
 	@echo "... vector_test.s"

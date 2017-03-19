@@ -90,7 +90,6 @@ vector_class_executable_EXTERNAL_OBJECTS =
 
 vector_class_executable: CMakeFiles/vector_class_executable.dir/vector_test.cpp.o
 vector_class_executable: CMakeFiles/vector_class_executable.dir/build.make
-vector_class_executable: libvector_class_library.a
 vector_class_executable: CMakeFiles/vector_class_executable.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/home/Technoatom/vector_class/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable vector_class_executable"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vector_class_executable.dir/link.txt --verbose=$(VERBOSE)
