@@ -9,6 +9,7 @@
 #include "../my_dump.h"
 #include <stdlib.h>
 #include <fstream>
+#include <initializer_list>
 
 template <typename T>
 class Vector{
@@ -34,6 +35,17 @@ public:
     Vector(const Vector& that);
 
     //--------------------------------------
+    //! A constructor, that uses a initializer list
+    //! \param init - a initializer list
+    //--------------------------------------
+    Vector(std::initializer_list<T> init);
+    //--------------------------------------
+    //! Move constructor for Vector class
+    //! \param that - Vector to be moved
+    //--------------------------------------
+    Vector(Vector&& that);
+
+    //--------------------------------------
     //! Destructor, default destructor for Vector class
     //--------------------------------------
     ~Vector();
@@ -45,14 +57,21 @@ public:
     void swap(Vector& that);
 
     //--------------------------------------
-    //! A copy operator
+    //! A copy assignment operator
     //! \param that - a vector to be copied
     //! \return a copied vector
     //--------------------------------------
     const Vector<T>& operator = (const Vector<T>&that);
 
     //--------------------------------------
-    //! A copy operator for a constant vector object
+    //! A move assignment operator
+    //! \param that - a Vector to be moved
+    //! \return a moved Vector
+    //--------------------------------------
+    Vector<T>& operator = (Vector<T>&& that);
+
+    //--------------------------------------
+    //! A operator, which returns a particular element of a constant vector
     //! \param index - index of an element to return
     //! \return the element
     //--------------------------------------
@@ -86,13 +105,13 @@ public:
     //! Returns information about the vector
     //! \return a string, which contains the information
     //--------------------------------------
-    std::string dump();
+    std::string dump() const;
 
     //--------------------------------------
     //! Returns information about the constant vector object
     //! \return a string, which contains the information
     //--------------------------------------
-    const std::string dump() const;
+//    const std::string dump() const;
 
 private:
 

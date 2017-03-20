@@ -60,6 +60,27 @@ Vector<T>::Vector(const Vector<T> &that):
 }
 
 template <typename T>
+Vector<T>::Vector(std::initializer_list<T> init):
+        size_(init.size())
+{
+    data_ = new value_type[init.size()];
+    std::copy(init.begin(), init.end(), data_);
+    ASSERT_OK(data_ != NULL)
+    LOG_PRINT("BIRTH", this);
+}
+
+template <typename T>
+Vector<T>::Vector(Vector<T>&& that):
+        size_(that.size_),
+        data_(that.data_)
+{
+    ASSERT_OK(data_ != NULL)
+    that.size_ = 0;
+    that.data_ = nullptr;
+    LOG_PRINT("BIRTH", this);
+}
+
+template <typename T>
 Vector<T>::~Vector() {
     ASSERT_OK(data_ != NULL)
     delete[] data_;
@@ -73,6 +94,7 @@ size_t Vector<T>::size() const{
 
 template <typename T>
 typename Vector<T>::value_type* Vector<T>::data_pointer() const{
+    ASSERT_OK(data_ != nullptr)
     return data_;
 }
 
@@ -135,13 +157,23 @@ const Vector<T>& Vector<T>::operator = (const Vector<T>&that) {
 }
 
 template <typename T>
+Vector<T>& Vector<T>::operator=(Vector<T> && that) {
+    delete [] data_;
+    data_ = that.data_;
+    size_ = that.size_;
+    that.data_ = nullptr;
+    that.size_ = 0;
+    return *this;
+}
+
+template <typename T>
 void* Vector<T>::operator new (size_t size, void* where_to_create) {
     LOG_PRINT("NEW", where_to_create);
     return where_to_create;
 }
 
 template <typename T>
-std::string Vector<T>::dump(){
+std::string Vector<T>::dump() const{
     ostringstream out_string;
     out_string<<"size: "<<size_<<endl;
     out_string<<"data pointer: "<<data_<<endl;
@@ -153,18 +185,18 @@ std::string Vector<T>::dump(){
     return out_string.str();
 }
 
-template <typename T>
-const std::string Vector<T>::dump() const{
-    ostringstream out_string;
-    out_string<<"size: "<<size_<<endl;
-    out_string<<"data pointer: "<<data_<<endl;
-    if (data_!=NULL && size_!=0) {
-        out_string<<"data:"<<endl;
-        for (int iter=0; iter < size_; iter++)
-            out_string<<iter<<':'<<data_[iter]<<endl;
-    }
-    return out_string.str();
-}
+//template <typename T>
+//const std::string Vector<T>::dump() const{
+//    ostringstream out_string;
+//    out_string<<"size: "<<size_<<endl;
+//    out_string<<"data pointer: "<<data_<<endl;
+//    if (data_!=NULL && size_!=0) {
+//        out_string<<"data:"<<endl;
+//        for (int iter=0; iter < size_; iter++)
+//            out_string<<iter<<':'<<data_[iter]<<endl;
+//    }
+//    return out_string.str();
+//}
 
 template <typename T>
 std::string Vector<T>::print_data_filename() const{

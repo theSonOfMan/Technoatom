@@ -25,6 +25,8 @@ stdlib.h
 -
 fstream
 -
+initializer_list
+-
 vector_class.hpp
 /Users/home/Technoatom/vector_class/vector_class.hpp
 
