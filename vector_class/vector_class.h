@@ -107,12 +107,9 @@ public:
     //--------------------------------------
     std::string dump() const;
 
-    //--------------------------------------
-    //! Returns information about the constant vector object
-    //! \return a string, which contains the information
-    //--------------------------------------
-//    const std::string dump() const;
-
+    void assert_test(){
+        ASSERT_OK(false);
+    }
 private:
 
     size_t size_;

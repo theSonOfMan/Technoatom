@@ -28,14 +28,14 @@ int main() {
 
     TEST(Stack,PushSingleNumber)
     {
-        Stack s;
+        Stack<int> s;
         ASSERT_TEST(s.push(46));
         ASSERT_TEST((s.size()==1));
     }
 
     TEST(Stack,CannotPushMore)
     {
-        Stack s;
+        Stack<int> s;
         for (int i = 0; i < s.capacity(); ++i)
             s.push(46);
         ASSERT_TEST(!s.push(46));
@@ -43,7 +43,7 @@ int main() {
 
     TEST(Stack,PopFromEmptyStack)
     {
-        Stack s;
+        Stack<int> s;
         ASSERT_TEST(!s.pop());
         s.push(46);
         ASSERT_TEST(s.pop());
@@ -52,7 +52,7 @@ int main() {
 
     TEST(Stack,TopFromStack)
     {
-        Stack s;
+        Stack<int> s;
         s.push(46);
         ASSERT_TEST(s.top() != NULL);
         ASSERT_TEST(*(s.top()) == 46);
@@ -62,7 +62,7 @@ int main() {
 
     TEST(Stack,CannotPopMore)
     {
-        Stack s;
+        Stack<int> s;
         for (int i=0; i<100; i++)
             s.push(46);
         for (int i=0; i<100; i++)

@@ -9,34 +9,20 @@
 
 #ifdef DEBUG
 #ifdef LOG_VERBOSITY
-#define LOG_PRINT(INFO, VAR) \
-    if (INFO == "BIRTH")\
-        {\
-            std::cout<<"Я родился в участке памяти "<<VAR<<std::endl;\
-            getchar();\
-        }\
-    if (INFO == "BIRTH")\
-        {\
-            std::cout<<"Я умер в участке памяти "<<VAR<<std::endl;\
-            getchar();\
-        }\
-    if (INFO == "NEW")\
-        {\
-            std::cout<<"я new, я выделил память здесь: "<<VAR<<std::endl;\
-            getchar();\
-        }
+#define LOG_PRINT(INFO) \
+    printf(INFO);
 #else
-#define LOG_PRINT(INFO, VAR)
+#define LOG_PRINT(INFO)
 #endif
 #else
-#define LOG_PRINT(INFO, VAR)
+#define LOG_PRINT(INFO)
 #endif
 
 template <typename T>
 Vector<T>::Vector(): size_(0){
     data_ = new value_type[size_];
     ASSERT_OK(data_ != NULL)
-    LOG_PRINT("BIRTH",this);
+    LOG_PRINT("BIRTH");
 }
 
 template <typename T>
@@ -45,7 +31,7 @@ Vector<T>::Vector(size_t vector_size): size_(vector_size){
     ASSERT_OK(data_ != NULL)
     for (int i=0; i<size_; i++)
         data_[i]=0;
-    LOG_PRINT("BIRTH", this);
+    LOG_PRINT("BIRTH");
 }
 
 template <typename T>
@@ -56,7 +42,7 @@ Vector<T>::Vector(const Vector<T> &that):
     ASSERT_OK(data_ != NULL)
     std::copy(that.data_, that.data_ + that.size_, data_);
     ASSERT_OK(data_ != NULL)
-    LOG_PRINT("BIRTH", this);
+    LOG_PRINT("BIRTH");
 }
 
 template <typename T>
@@ -66,7 +52,7 @@ Vector<T>::Vector(std::initializer_list<T> init):
     data_ = new value_type[init.size()];
     std::copy(init.begin(), init.end(), data_);
     ASSERT_OK(data_ != NULL)
-    LOG_PRINT("BIRTH", this);
+    LOG_PRINT("BIRTH");
 }
 
 template <typename T>
@@ -77,14 +63,14 @@ Vector<T>::Vector(Vector<T>&& that):
     ASSERT_OK(data_ != NULL)
     that.size_ = 0;
     that.data_ = nullptr;
-    LOG_PRINT("BIRTH", this);
+    LOG_PRINT("BIRTH");
 }
 
 template <typename T>
 Vector<T>::~Vector() {
     ASSERT_OK(data_ != NULL)
     delete[] data_;
-    LOG_PRINT("DEATH", this);
+    LOG_PRINT("DEATH");
 }
 
 template <typename T>
@@ -152,7 +138,7 @@ const Vector<T>& Vector<T>::operator = (const Vector<T>&that) {
     if (&that == this) return *this;
     this->~Vector();
     new (this) Vector(that);
-    LOG_PRINT("BIRTH", this);
+    LOG_PRINT("BIRTH");
     return *this;
 }
 
@@ -168,7 +154,7 @@ Vector<T>& Vector<T>::operator=(Vector<T> && that) {
 
 template <typename T>
 void* Vector<T>::operator new (size_t size, void* where_to_create) {
-    LOG_PRINT("NEW", where_to_create);
+    LOG_PRINT("NEW");
     return where_to_create;
 }
 
@@ -184,19 +170,6 @@ std::string Vector<T>::dump() const{
     }
     return out_string.str();
 }
-
-//template <typename T>
-//const std::string Vector<T>::dump() const{
-//    ostringstream out_string;
-//    out_string<<"size: "<<size_<<endl;
-//    out_string<<"data pointer: "<<data_<<endl;
-//    if (data_!=NULL && size_!=0) {
-//        out_string<<"data:"<<endl;
-//        for (int iter=0; iter < size_; iter++)
-//            out_string<<iter<<':'<<data_[iter]<<endl;
-//    }
-//    return out_string.str();
-//}
 
 template <typename T>
 std::string Vector<T>::print_data_filename() const{

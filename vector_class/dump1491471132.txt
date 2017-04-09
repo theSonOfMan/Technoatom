@@ -1,0 +1,6 @@
+file: /Users/home/Technoatom/vector_class/vector_class.h
+line: 111
+function: assert_test
+size: 0
+data pointer: 0x7fbe4bc03320
+

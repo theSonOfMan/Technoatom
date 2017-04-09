@@ -71,5 +71,22 @@ int main (){
         ASSERT_TEST(p);
     }
 
+    TEST(Vector, WriteAndRead)
+    {
+        Vector<int> vect(10);
+        for (int i=0; i<10; i++)
+            vect[i] = i+1;
+        bool p=true;
+        for (int i=0; i<10; i++)
+            if (vect[i] != i+1)
+                p=false;
+        ASSERT_TEST(p);
+    }
+
+//    {
+//        Vector<int> v;
+//        v.assert_test();
+//    }
+
     return 0;
 }

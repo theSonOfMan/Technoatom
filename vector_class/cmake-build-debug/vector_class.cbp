@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/home/Technoatom/vector_class/vector_clas.h">
+			<Option target="vector_class_executable"/>
+		</Unit>
+		<Unit filename="/Users/home/Technoatom/vector_class/vector_class.h">
+			<Option target="vector_class_executable"/>
+		</Unit>
 		<Unit filename="/Users/home/Technoatom/vector_class/vector_test.cpp">
 			<Option target="vector_class_executable"/>
 		</Unit>

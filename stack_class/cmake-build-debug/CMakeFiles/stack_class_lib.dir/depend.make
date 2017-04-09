@@ -4,4 +4,5 @@
 CMakeFiles/stack_class_lib.dir/stack_class.cpp.o: /Users/home/Technoatom/my_dump.h
 CMakeFiles/stack_class_lib.dir/stack_class.cpp.o: ../stack_class.cpp
 CMakeFiles/stack_class_lib.dir/stack_class.cpp.o: ../stack_class.h
+CMakeFiles/stack_class_lib.dir/stack_class.cpp.o: ../stack_class.hpp
 
