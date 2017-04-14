@@ -57,40 +57,39 @@ include CMakeFiles/stack_class_executable.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/stack_class_executable.dir/flags.make
 
-CMakeFiles/stack_class_executable.dir/StackTest.cpp.o: CMakeFiles/stack_class_executable.dir/flags.make
-CMakeFiles/stack_class_executable.dir/StackTest.cpp.o: ../StackTest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/stack_class_executable.dir/StackTest.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/stack_class_executable.dir/StackTest.cpp.o -c /Users/home/Technoatom/stack_class/StackTest.cpp
+CMakeFiles/stack_class_executable.dir/main.cpp.o: CMakeFiles/stack_class_executable.dir/flags.make
+CMakeFiles/stack_class_executable.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/stack_class_executable.dir/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/stack_class_executable.dir/main.cpp.o -c /Users/home/Technoatom/stack_class/main.cpp
 
-CMakeFiles/stack_class_executable.dir/StackTest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stack_class_executable.dir/StackTest.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/home/Technoatom/stack_class/StackTest.cpp > CMakeFiles/stack_class_executable.dir/StackTest.cpp.i
+CMakeFiles/stack_class_executable.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stack_class_executable.dir/main.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/home/Technoatom/stack_class/main.cpp > CMakeFiles/stack_class_executable.dir/main.cpp.i
 
-CMakeFiles/stack_class_executable.dir/StackTest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stack_class_executable.dir/StackTest.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/home/Technoatom/stack_class/StackTest.cpp -o CMakeFiles/stack_class_executable.dir/StackTest.cpp.s
+CMakeFiles/stack_class_executable.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stack_class_executable.dir/main.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/home/Technoatom/stack_class/main.cpp -o CMakeFiles/stack_class_executable.dir/main.cpp.s
 
-CMakeFiles/stack_class_executable.dir/StackTest.cpp.o.requires:
+CMakeFiles/stack_class_executable.dir/main.cpp.o.requires:
 
-.PHONY : CMakeFiles/stack_class_executable.dir/StackTest.cpp.o.requires
+.PHONY : CMakeFiles/stack_class_executable.dir/main.cpp.o.requires
 
-CMakeFiles/stack_class_executable.dir/StackTest.cpp.o.provides: CMakeFiles/stack_class_executable.dir/StackTest.cpp.o.requires
-	$(MAKE) -f CMakeFiles/stack_class_executable.dir/build.make CMakeFiles/stack_class_executable.dir/StackTest.cpp.o.provides.build
-.PHONY : CMakeFiles/stack_class_executable.dir/StackTest.cpp.o.provides
+CMakeFiles/stack_class_executable.dir/main.cpp.o.provides: CMakeFiles/stack_class_executable.dir/main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/stack_class_executable.dir/build.make CMakeFiles/stack_class_executable.dir/main.cpp.o.provides.build
+.PHONY : CMakeFiles/stack_class_executable.dir/main.cpp.o.provides
 
-CMakeFiles/stack_class_executable.dir/StackTest.cpp.o.provides.build: CMakeFiles/stack_class_executable.dir/StackTest.cpp.o
+CMakeFiles/stack_class_executable.dir/main.cpp.o.provides.build: CMakeFiles/stack_class_executable.dir/main.cpp.o
 
 
 # Object files for target stack_class_executable
 stack_class_executable_OBJECTS = \
-"CMakeFiles/stack_class_executable.dir/StackTest.cpp.o"
+"CMakeFiles/stack_class_executable.dir/main.cpp.o"
 
 # External object files for target stack_class_executable
 stack_class_executable_EXTERNAL_OBJECTS =
 
-stack_class_executable: CMakeFiles/stack_class_executable.dir/StackTest.cpp.o
+stack_class_executable: CMakeFiles/stack_class_executable.dir/main.cpp.o
 stack_class_executable: CMakeFiles/stack_class_executable.dir/build.make
-stack_class_executable: libstack_class_lib.a
 stack_class_executable: CMakeFiles/stack_class_executable.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/home/Technoatom/stack_class/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable stack_class_executable"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stack_class_executable.dir/link.txt --verbose=$(VERBOSE)
@@ -100,7 +99,7 @@ CMakeFiles/stack_class_executable.dir/build: stack_class_executable
 
 .PHONY : CMakeFiles/stack_class_executable.dir/build
 
-CMakeFiles/stack_class_executable.dir/requires: CMakeFiles/stack_class_executable.dir/StackTest.cpp.o.requires
+CMakeFiles/stack_class_executable.dir/requires: CMakeFiles/stack_class_executable.dir/main.cpp.o.requires
 
 .PHONY : CMakeFiles/stack_class_executable.dir/requires
 

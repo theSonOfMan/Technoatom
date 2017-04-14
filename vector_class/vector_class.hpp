@@ -97,7 +97,7 @@ void Vector<T>::print_data() const{
         ofstream fout(path);
         for (int iter = 0; iter < size_; iter++)
             fout << iter << ": " << data_[iter] << std::endl;
-        cout<<"data was put in "<<path<<std::endl;
+        std::cout<<"data was put in "<<path<<std::endl;
         fout.close();
     } else {
         for (int iter = 0; iter < size_; iter++)

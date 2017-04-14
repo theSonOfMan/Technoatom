@@ -55,7 +55,7 @@ int main() {
         Stack<int> s;
         s.push(46);
         ASSERT_TEST(s.top() != NULL);
-        ASSERT_TEST(*(s.top()) == 46);
+        ASSERT_TEST(s.top()) == 46);
         s.pop();
         ASSERT_TEST(s.top() == NULL);
     }
@@ -68,5 +68,11 @@ int main() {
         for (int i=0; i<100; i++)
             s.pop();
         ASSERT_TEST(!s.pop());
+    }
+
+    {
+        Stack<int> s;
+        s.push(3);
+        std::cout << s.pop();
     }
 }

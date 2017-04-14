@@ -47,7 +47,7 @@ public:
     //!Shows the top value of the stack
     //!@return pointer on the value
     //--------------------------------------
-    const value_type* top();
+    const value_type& top();
     
     //--------------------------------------
     //!Shows if stack is empty
@@ -59,7 +59,7 @@ public:
     //!Deletes the top value from the Stack
     //!@return bool-type result of an operation (true of false)
     //--------------------------------------
-    bool pop();
+    value_type& pop();
     
     //--------------------------------------
     //!Pushes the value to the stack

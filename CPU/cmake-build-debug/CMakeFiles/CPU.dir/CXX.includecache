@@ -11,7 +11,13 @@
 -
 /Users/home/Technoatom/stack_class/stack_class.h
 -
+/Users/home/Technoatom/print_lib/print.h
+-
+/Users/home/Technoatom/CPU/cmd_codes.h
+-
 fstream
+-
+iostream
 -
 vector
 -
@@ -19,15 +25,25 @@ CPU_class.hpp
 /Users/home/Technoatom/CPU/CPU_class.hpp
 
 /Users/home/Technoatom/CPU/CPU_class.hpp
+commands.h
+/Users/home/Technoatom/CPU/commands.h
+commands.h
+/Users/home/Technoatom/CPU/commands.h
+
+/Users/home/Technoatom/CPU/cmd_codes.h
 
 /Users/home/Technoatom/CPU/main.cpp
 iostream
 -
 CPU_class.h
 /Users/home/Technoatom/CPU/CPU_class.h
+/Users/home/Technoatom/print_lib/print.h
+-
 
 /Users/home/Technoatom/my_dump.h
 ctime
+-
+iostream
 -
 cassert
 -
@@ -35,6 +51,8 @@ sstream
 -
 fstream
 -
+
+/Users/home/Technoatom/print_lib/print.h
 
 /Users/home/Technoatom/stack_class/stack_class.h
 fstream
@@ -51,6 +69,10 @@ cassert
 -
 /Users/home/Technoatom/my_dump.h
 -
+stack_class.hpp
+/Users/home/Technoatom/stack_class/stack_class.hpp
+
+/Users/home/Technoatom/stack_class/stack_class.hpp
 
 /Users/home/Technoatom/vector_class/vector_class.h
 iostream

@@ -1,12 +1,11 @@
 #include <iostream>
 
-using namespace std;
 #include "stack_class.h"
 
 int main() {
-   Stack s;
-    s.push(10);
-    cout<<s.top()<<endl;
-    cout<<*(s.top());
+    Stack<int> s;
+    s.push(345);
+    std::cout<<s.top()<<std::endl;
+    std::cout<<s.pop();
     return 0;
 }

@@ -3,9 +3,12 @@
 
 CMakeFiles/CPU.dir/main.cpp.o: ../CPU_class.h
 CMakeFiles/CPU.dir/main.cpp.o: ../CPU_class.hpp
+CMakeFiles/CPU.dir/main.cpp.o: ../cmd_codes.h
 CMakeFiles/CPU.dir/main.cpp.o: ../main.cpp
 CMakeFiles/CPU.dir/main.cpp.o: /Users/home/Technoatom/my_dump.h
+CMakeFiles/CPU.dir/main.cpp.o: /Users/home/Technoatom/print_lib/print.h
 CMakeFiles/CPU.dir/main.cpp.o: /Users/home/Technoatom/stack_class/stack_class.h
+CMakeFiles/CPU.dir/main.cpp.o: /Users/home/Technoatom/stack_class/stack_class.hpp
 CMakeFiles/CPU.dir/main.cpp.o: /Users/home/Technoatom/vector_class/vector_class.h
 CMakeFiles/CPU.dir/main.cpp.o: /Users/home/Technoatom/vector_class/vector_class.hpp
 

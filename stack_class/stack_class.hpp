@@ -2,14 +2,13 @@ template <typename T>
 Stack<T>::Stack(): size_(0){}
 
 template <typename T>
-const typename Stack<T>::value_type* Stack<T>::top(){
+const typename Stack<T>::value_type& Stack<T>::top(){
     ASSERT_OK(ok());
     if (this->empty()){
-        ASSERT_OK(ok());
-        return NULL;
+        ASSERT_OK(!"attempt to top from empty stack");
     }
     ASSERT_OK(ok());
-    return &(data_[size_-1]);
+    return data_[size_-1];
 }
 
 template <typename T>
@@ -26,13 +25,13 @@ bool Stack<T>::push(const value_type& value_to_push){
 }
 
 template <typename T>
-bool Stack<T>::pop(){
+typename Stack<T>::value_type& Stack<T>::pop(){
     ASSERT_OK(ok());
     if (this->empty())
-        return false;
+        ASSERT_OK(!"attempt to top from empty stack");
     --size_;
     ASSERT_OK(ok());
-    return true;
+    return data_[size_];
 }
 
 template <typename T>

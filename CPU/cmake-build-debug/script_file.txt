@@ -1,0 +1,13 @@
+push x1
+push x2
+add
+push_const 1
+push_const 2
+call :1
+pop x0
+end
+
+:1
+add
+multiply
+ret

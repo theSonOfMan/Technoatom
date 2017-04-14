@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/stack_class_executable.dir/StackTest.cpp.o"
+  "CMakeFiles/stack_class_executable.dir/main.cpp.o"
   "stack_class_executable.pdb"
   "stack_class_executable"
 )

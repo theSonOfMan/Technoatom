@@ -1,0 +1,32 @@
+#pragma once
+
+#define X0_CODE 1000
+#define X1_CODE 1001
+#define X2_CODE 1002
+#define Y0_CODE 2000
+#define Y1_CODE 2001
+#define Y2_CODE 2002
+
+#define ADD_CMD_CODE 101
+#define DIV_CMD_CODE 102
+#define MOD_CMD_CODE 103
+#define DEDUCT_CMD_CODE 104
+#define MULTIPLY_CMD_CODE 105
+
+#define PUSH_CMD_CODE 201
+#define PUSH_CONST_CMD_CODE 202
+#define POP_CMD_CODE 203
+#define TOP_CMD_CODE 204
+
+#define JMP_CMD_CODE 301
+#define CALL_CMD_CODE 302
+#define RET_CMD_CODE 303
+
+#define JE_CMD_CODE 401
+#define JA_CMD_CODE 402
+#define JAE_CMD_CODE 403
+#define JB_CMD_CODE 404
+#define JBE_CMD_CODE 405
+#define JNE_CMD_CODE 406
+
+#define END_CMD_CODE 0
