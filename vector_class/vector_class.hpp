@@ -87,14 +87,14 @@ typename Vector<T>::value_type* Vector<T>::data_pointer() const{
 template <typename T>
 void Vector<T>::print_data() const{
     ASSERT_OK(data_ != NULL)
-    std::cout<<"You want to print the data of a Vector."<<endl;
-    std::cout<<"Type 'file' to print in file"<<endl;
-    std::cout<<"Type anything else to print in console"<<endl;
-    string user_response;
+    std::cout<<"You want to print the data of a Vector."<<std::endl;
+    std::cout<<"Type 'file' to print in file"<<std::endl;
+    std::cout<<"Type anything else to print in console"<<std::endl;
+    std::string user_response;
     std::cin>>user_response;
     if (user_response == "file"){
         std::string path = print_data_filename();
-        ofstream fout(path);
+        std::ofstream fout(path);
         for (int iter = 0; iter < size_; iter++)
             fout << iter << ": " << data_[iter] << std::endl;
         std::cout<<"data was put in "<<path<<std::endl;
@@ -160,20 +160,20 @@ void* Vector<T>::operator new (size_t size, void* where_to_create) {
 
 template <typename T>
 std::string Vector<T>::dump() const{
-    ostringstream out_string;
-    out_string<<"size: "<<size_<<endl;
-    out_string<<"data pointer: "<<data_<<endl;
+    std::ostringstream out_string;
+    out_string<<"size: "<<size_<<std::endl;
+    out_string<<"data pointer: "<<data_<<std::endl;
     if (data_!=NULL && size_!=0) {
-        out_string<<"data:"<<endl;
+        out_string<<"data:"<<std::endl;
         for (int iter=0; iter < size_; iter++)
-            out_string<<iter<<':'<<data_[iter]<<endl;
+            out_string<<iter<<':'<<data_[iter]<<std::endl;
     }
     return out_string.str();
 }
 
 template <typename T>
 std::string Vector<T>::print_data_filename() const{
-    ostringstream file_path;
+    std::ostringstream file_path;
     file_path<<"../data";
     file_path<<time(NULL)<<".txt";
     return file_path.str();

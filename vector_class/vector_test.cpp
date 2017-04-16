@@ -8,6 +8,7 @@
 #include "vector_class.h"
 #include <cassert>
 #include <ctime>
+#include "../my_dump.h"
 
 #define TEST(what,case) printf("\nObject: " #what "    test: "#case"\n");
 
@@ -83,10 +84,11 @@ int main (){
         ASSERT_TEST(p);
     }
 
-//    {
-//        Vector<int> v;
-//        v.assert_test();
-//    }
+    {
+        Vector<int> v;
+        v.assert_test();
+    }
+
 
     return 0;
 }
