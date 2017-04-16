@@ -16,10 +16,10 @@ A class must have a dump() method to use an assert macro.
 
 std::string generate_file_name() {
     std::ostringstream file_path;
-    file_path<<"/Users/home/logs";
+    file_path<<"../../logs";
     char buf[100];
     std::time_t t = std::time(NULL);
-    std::strftime( buf, sizeof(buf), "%Y-%m-%d.%H/%M/%S",std::localtime(&t));
+    std::strftime( buf, sizeof(buf), "%Y-%m-%d.%H:%M:%S",std::localtime(&t));
     file_path<<buf<<".txt";
     return file_path.str();
 }
@@ -71,31 +71,40 @@ void Logger::LogTime(){
 
 #ifdef LOG_VERBOSITY
 
-#ifdef LOG_INFO_USAGE
-#define LOG_INFO(p); \
-    Logger::GetLogger().LogTime();\
-    Logger::GetLogger().WriteInLogger("\n");\
-    Logger::GetLogger().WriteInLogger(p);
-
-#else
-#define LOG_INFO(p);
-#endif //LOG_INFO_USAGE
-
-
-#ifdef LOG_WARNING_USAGE
-#define LOG_WARNING(p); \
-    Logger::GetLogger().WriteInLogger(p);
-#else
-#define LOG_WARNING(p);
-#endif //LOG_WARNING_USAGE
+    #ifdef LOG_INFO_USAGE
+        #define LOG_INFO(p); \
+            Logger::GetLogger().LogTime();\
+            Logger::GetLogger().WriteInLogger(p);\
+            Logger::GetLogger().WriteInLogger("\n");
+    #else
+        #define LOG_INFO(p);
+    #endif //LOG_INFO_USAGE
 
 
-#ifdef LOG_ERROR_USAGE
-#define LOG_ERROR(p); \
-    Logger::GetLogger().WriteInLogger(p);
-#else
-#define LOG_ERROR(p);
-#endif //LOG_ERROR_USAGE
+    #ifdef LOG_WARNING_USAGE
+        #define LOG_WARNING(p); \
+            Logger::GetLogger().LogTime();\
+            Logger::GetLogger().WriteInLogger("\n");\
+            Logger::GetLogger().WriteInLogger(p);
+    #else
+        #define LOG_WARNING(p);
+    #endif //LOG_WARNING_USAGE
+
+
+    #ifdef LOG_ERROR_USAGE
+        #define LOG_ERROR(p); \
+            Logger::GetLogger().LogTime();\
+            Logger::GetLogger().WriteInLogger("\n");\
+            Logger::GetLogger().WriteInLogger(p);
+    #else
+        #define LOG_ERROR(p);
+    #endif //LOG_ERROR_USAGE
+
+#else 
+
+    #define LOG_ERROR
+    #define LOG_INFO
+    #define LOG_WARNING
 
 #endif //LOG_VERBOSITY
 
