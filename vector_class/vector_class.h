@@ -6,10 +6,13 @@
 
 #pragma once
 #include <iostream>
-#include "../my_dump.h"
 #include <stdlib.h>
 #include <fstream>
 #include <initializer_list>
+
+#define LOG_VERBOSITY
+#define LOG_INFO_USAGE
+#include "../my_dump.h"
 
 template <typename T>
 class Vector{

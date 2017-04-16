@@ -5,8 +5,6 @@ Vector.zip
 
 *.zip
 
-*.txt
-
 *.xml
 
 *.includecache

@@ -1,7 +1,8 @@
 //--------------------------------------
 //! \file my_dump.h
-//! \brief Contains dump and assert macros for different classes.\
-A class must have a dump() method.
+//! \brief Contains Logger class ang log macros. \
+Contains dump and assert macros for different classes. \
+A class must have a dump() method to use an assert macro.
 //! \author theSonOfMan, 2017
 //--------------------------------------
 #ifndef MY_DUMP_H
@@ -15,15 +16,13 @@ A class must have a dump() method.
 
 std::string generate_file_name() {
     std::ostringstream file_path;
-    file_path<<"../logs";
+    file_path<<"/Users/home/logs";
     char buf[100];
     std::time_t t = std::time(NULL);
     std::strftime( buf, sizeof(buf), "%Y-%m-%d.%H/%M/%S",std::localtime(&t));
     file_path<<buf<<".txt";
     return file_path.str();
 }
-
-
 
 class Logger{
 public:
@@ -34,17 +33,23 @@ public:
 
     ~Logger();
 
+    void LogTime();
+
     const std::string filename_;
 
 private:
-    Logger();
 
+    Logger();
+    std::clock_t program_start_;
     std::ofstream file_;
 };
 
-Logger::Logger():filename_(generate_file_name())
+Logger::Logger():
+    filename_(generate_file_name()),
+    program_start_(std::clock())
 {
     file_ = std::ofstream(filename_);
+    std::cout << std::endl << "file for logger is " << filename_ << std::endl;
 }
 
 Logger::~Logger(){
@@ -60,12 +65,18 @@ void Logger::WriteInLogger(std::string string_to_log){
     file_<<string_to_log;
 }
 
+void Logger::LogTime(){
+    file_ << (std::clock() - program_start_) / (double) CLOCKS_PER_SEC << "s : ";
+}
 
 #ifdef LOG_VERBOSITY
 
 #ifdef LOG_INFO_USAGE
 #define LOG_INFO(p); \
+    Logger::GetLogger().LogTime();\
+    Logger::GetLogger().WriteInLogger("\n");\
     Logger::GetLogger().WriteInLogger(p);
+
 #else
 #define LOG_INFO(p);
 #endif //LOG_INFO_USAGE

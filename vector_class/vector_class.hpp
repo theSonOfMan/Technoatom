@@ -4,25 +4,11 @@
 //! \author theSonOfMan, 2017
 //--------------------------------------
 
-#define DEBUG
-//#define LOG_VERBOSITY
-
-#ifdef DEBUG
-#ifdef LOG_VERBOSITY
-#define LOG_PRINT(INFO) \
-    printf(INFO);
-#else
-#define LOG_PRINT(INFO)
-#endif
-#else
-#define LOG_PRINT(INFO)
-#endif
-
 template <typename T>
 Vector<T>::Vector(): size_(0){
     data_ = new value_type[size_];
     ASSERT_OK(data_ != NULL)
-    LOG_PRINT("BIRTH");
+    LOG_INFO("VECTOR CREATED");
 }
 
 template <typename T>
@@ -31,7 +17,7 @@ Vector<T>::Vector(size_t vector_size): size_(vector_size){
     ASSERT_OK(data_ != NULL)
     for (int i=0; i<size_; i++)
         data_[i]=0;
-    LOG_PRINT("BIRTH");
+    LOG_INFO("VECTOR CREATED");
 }
 
 template <typename T>
@@ -42,7 +28,7 @@ Vector<T>::Vector(const Vector<T> &that):
     ASSERT_OK(data_ != NULL)
     std::copy(that.data_, that.data_ + that.size_, data_);
     ASSERT_OK(data_ != NULL)
-    LOG_PRINT("BIRTH");
+    LOG_INFO("VECTOR COPIED");
 }
 
 template <typename T>
@@ -52,7 +38,7 @@ Vector<T>::Vector(std::initializer_list<T> init):
     data_ = new value_type[init.size()];
     std::copy(init.begin(), init.end(), data_);
     ASSERT_OK(data_ != NULL)
-    LOG_PRINT("BIRTH");
+    LOG_INFO("VECTOR CREATED");
 }
 
 template <typename T>
@@ -63,14 +49,14 @@ Vector<T>::Vector(Vector<T>&& that):
     ASSERT_OK(data_ != NULL)
     that.size_ = 0;
     that.data_ = nullptr;
-    LOG_PRINT("BIRTH");
+    LOG_INFO("VECTOR MOVED");
 }
 
 template <typename T>
 Vector<T>::~Vector() {
     ASSERT_OK(data_ != NULL)
     delete[] data_;
-    LOG_PRINT("DEATH");
+    LOG_INFO("VECTOR DESTROYED");
 }
 
 template <typename T>
@@ -138,7 +124,7 @@ const Vector<T>& Vector<T>::operator = (const Vector<T>&that) {
     if (&that == this) return *this;
     this->~Vector();
     new (this) Vector(that);
-    LOG_PRINT("BIRTH");
+    LOG_INFO("VECTOR COPIED");
     return *this;
 }
 
@@ -154,7 +140,7 @@ Vector<T>& Vector<T>::operator=(Vector<T> && that) {
 
 template <typename T>
 void* Vector<T>::operator new (size_t size, void* where_to_create) {
-    LOG_PRINT("NEW");
+    LOG_INFO("MEMORY ALLOCATED");
     return where_to_create;
 }
 

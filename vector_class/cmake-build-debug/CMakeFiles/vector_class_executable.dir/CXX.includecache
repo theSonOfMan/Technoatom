@@ -21,14 +21,14 @@ fstream
 /Users/home/Technoatom/vector_class/vector_class.h
 iostream
 -
-../my_dump.h
-/Users/home/Technoatom/my_dump.h
 stdlib.h
 -
 fstream
 -
 initializer_list
 -
+../my_dump.h
+/Users/home/Technoatom/my_dump.h
 vector_class.hpp
 /Users/home/Technoatom/vector_class/vector_class.hpp
 
@@ -43,6 +43,4 @@ cassert
 -
 ctime
 -
-../my_dump.h
-/Users/home/Technoatom/my_dump.h
 
