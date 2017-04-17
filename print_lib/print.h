@@ -7,6 +7,9 @@
 #ifndef PRINT_LIB_PRINT_H
 #define PRINT_LIB_PRINT_H
 
+#include <string>
+#include <iostream>
+
 void print (const char* str){
     while (*str)
         printf("%c", *str++);
@@ -25,4 +28,23 @@ void print (const char*str, T val, Args... args){
     }
 }
 
+void print (std::string str){
+    std::cout << str;
+}
+
+template <typename T, typename ...Args>
+void print (std::string str, T val, Args... args){
+    int i = 0;
+    while (i < str.length()){
+        if (str[i] != '#')
+            printf("%c",str[i]);
+        else{
+            std::cout << val;
+            str = str.erase(0,i+1);
+            print(str, args...);
+            break;
+        }
+        i++;
+    }
+}
 #endif //PRINT_LIB_PRINT_H

@@ -13,10 +13,12 @@ A class must have a dump() method to use an assert macro.
 #include <cassert>
 #include <sstream>
 #include <fstream>
+#include <exception>
+#include "print_lib/print.h"
 
 std::string generate_file_name() {
     std::ostringstream file_path;
-    file_path<<"../../logs";
+    file_path<<"../../program logs/logs";
     char buf[100];
     std::time_t t = std::time(NULL);
     std::strftime( buf, sizeof(buf), "%Y-%m-%d.%H:%M:%S",std::localtime(&t));
@@ -24,12 +26,38 @@ std::string generate_file_name() {
     return file_path.str();
 }
 
+class my_sp_exception : public std::exception{
+public:  
+
+    my_sp_exception(const char* info);
+
+    const char* what();
+
+    ~my_sp_exception(){}
+
+private:
+    const char* info_;
+};
+
+my_sp_exception::my_sp_exception(const char* info): info_(info)
+{}
+
+const char* my_sp_exception::what(){
+    return info_;
+}
+
 class Logger{
 public:
 
     static Logger& GetLogger();
 
-    void WriteInLogger(std::string string_to_log);
+    void WriteInLogger(std::string str);
+
+    template <typename T, typename ...Args>
+    void WriteInLogger(std::string str, T val, Args... args);
+
+    template <typename T>
+    void WriteInLogger(T val);
 
     ~Logger();
 
@@ -49,7 +77,7 @@ Logger::Logger():
     program_start_(std::clock())
 {
     file_ = std::ofstream(filename_);
-    std::cout << std::endl << "file for logger is " << filename_ << std::endl;
+    file_ << "Program init" << std::endl;
 }
 
 Logger::~Logger(){
@@ -61,12 +89,34 @@ Logger& Logger::GetLogger(){
     return logger;
 }
 
-void Logger::WriteInLogger(std::string string_to_log){
-    file_<<string_to_log;
+void Logger::WriteInLogger(std::string str){
+
+    file_ << str;
+}
+
+template <typename T, typename ...Args>
+void Logger::WriteInLogger(std::string str, T val, Args... args){
+    int i = 0;
+    while (i < str.length()){
+        if (str[i] != '#')
+            printf("%c",str[i]);
+        else{
+            std::cout << val;
+            str = str.erase(0,i+1);
+            print(str, args...);
+            break;
+        }
+        i++;
+    }
+}
+
+template <typename T>
+void Logger::WriteInLogger(T val){
+    file_ << val;
 }
 
 void Logger::LogTime(){
-    file_ << (std::clock() - program_start_) / (double) CLOCKS_PER_SEC << "s : ";
+    file_ << (std::clock() - program_start_) / (double) CLOCKS_PER_SEC << "s\t : \t";
 }
 
 #ifdef LOG_VERBOSITY
@@ -84,8 +134,8 @@ void Logger::LogTime(){
     #ifdef LOG_WARNING_USAGE
         #define LOG_WARNING(p); \
             Logger::GetLogger().LogTime();\
-            Logger::GetLogger().WriteInLogger("\n");\
-            Logger::GetLogger().WriteInLogger(p);
+            Logger::GetLogger().WriteInLogger(p);\
+            Logger::GetLogger().WriteInLogger("\n");
     #else
         #define LOG_WARNING(p);
     #endif //LOG_WARNING_USAGE
@@ -94,8 +144,8 @@ void Logger::LogTime(){
     #ifdef LOG_ERROR_USAGE
         #define LOG_ERROR(p); \
             Logger::GetLogger().LogTime();\
-            Logger::GetLogger().WriteInLogger("\n");\
-            Logger::GetLogger().WriteInLogger(p);
+            Logger::GetLogger().WriteInLogger(p);\
+            Logger::GetLogger().WriteInLogger("\n");
     #else
         #define LOG_ERROR(p);
     #endif //LOG_ERROR_USAGE
@@ -122,15 +172,17 @@ do{\
 
 #define DUMP_CREATION \
     std::ostringstream dump_string;\
-    dump_string<<"file: "<<__FILE__<<std::endl;\
-    dump_string<<"line: "<<__LINE__<<std::endl;\
-    dump_string<<"function: "<<__FUNCTION__<<std::endl;\
-    dump_string<<dump()<<std::endl;
+    dump_string << "Critical failure" << std::endl;\
+    dump_string << "file: " << __FILE__ << std::endl;\
+    dump_string << "line: " << __LINE__ << std::endl;\
+    dump_string << "function: " << __FUNCTION__ << std::endl;\
+    dump_string << dump()<<std::endl;
 
 #define CONSOLE_OUTPUT \
     std::cerr<<dump_string.str();
 
 #define FILE_OUTPUT \
+    Logger::GetLogger().LogTime();\
     Logger::GetLogger().WriteInLogger(dump_string.str());\
     std::cerr<<"logs were put in "<<Logger::GetLogger().filename_;
 
