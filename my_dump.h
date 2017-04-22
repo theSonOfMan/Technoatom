@@ -31,18 +31,26 @@ public:
 
     my_sp_exception(const char* info);
 
-    const char* what();
+    const char* what() const noexcept;
 
     ~my_sp_exception(){}
+
+    const char* error_file_;
+    size_t error_line_;
+    const char* error_func_;
 
 private:
     const char* info_;
 };
 
-my_sp_exception::my_sp_exception(const char* info): info_(info)
+my_sp_exception::my_sp_exception(const char* info): 
+    info_(info),
+    error_file_(__FILE__),
+    error_line_(__LINE__),
+    error_func_(__FUNCTION__)
 {}
 
-const char* my_sp_exception::what(){
+const char* my_sp_exception::what() const noexcept{
     return info_;
 }
 
@@ -56,8 +64,8 @@ public:
     template <typename T, typename ...Args>
     void WriteInLogger(std::string str, T val, Args... args);
 
-    template <typename T>
-    void WriteInLogger(T val);
+    // template <typename T>
+    // void WriteInLogger(T val);
 
     ~Logger();
 
@@ -90,7 +98,6 @@ Logger& Logger::GetLogger(){
 }
 
 void Logger::WriteInLogger(std::string str){
-
     file_ << str;
 }
 
@@ -99,21 +106,21 @@ void Logger::WriteInLogger(std::string str, T val, Args... args){
     int i = 0;
     while (i < str.length()){
         if (str[i] != '#')
-            printf("%c",str[i]);
+            file_ << str[i];
         else{
-            std::cout << val;
+            file_ << val;
             str = str.erase(0,i+1);
-            print(str, args...);
+            Logger::WriteInLogger(str, args...);
             break;
         }
         i++;
     }
 }
 
-template <typename T>
-void Logger::WriteInLogger(T val){
-    file_ << val;
-}
+// template <typename T>
+// void Logger::WriteInLogger(T val){
+//     file_ << val;
+// }
 
 void Logger::LogTime(){
     file_ << (std::clock() - program_start_) / (double) CLOCKS_PER_SEC << "s\t : \t";
@@ -122,9 +129,9 @@ void Logger::LogTime(){
 #ifdef LOG_VERBOSITY
 
     #ifdef LOG_INFO_USAGE
-        #define LOG_INFO(p); \
+        #define LOG_INFO(...); \
             Logger::GetLogger().LogTime();\
-            Logger::GetLogger().WriteInLogger(p);\
+            Logger::GetLogger().WriteInLogger(__VA_ARGS__);\
             Logger::GetLogger().WriteInLogger("\n");
     #else
         #define LOG_INFO(p);
@@ -132,9 +139,9 @@ void Logger::LogTime(){
 
 
     #ifdef LOG_WARNING_USAGE
-        #define LOG_WARNING(p); \
+        #define LOG_WARNING(...); \
             Logger::GetLogger().LogTime();\
-            Logger::GetLogger().WriteInLogger(p);\
+            Logger::GetLogger().WriteInLogger(__VA_ARGS__);\
             Logger::GetLogger().WriteInLogger("\n");
     #else
         #define LOG_WARNING(p);
@@ -142,9 +149,9 @@ void Logger::LogTime(){
 
 
     #ifdef LOG_ERROR_USAGE
-        #define LOG_ERROR(p); \
+        #define LOG_ERROR(...); \
             Logger::GetLogger().LogTime();\
-            Logger::GetLogger().WriteInLogger(p);\
+            Logger::GetLogger().WriteInLogger(__VA_ARGS__);\
             Logger::GetLogger().WriteInLogger("\n");
     #else
         #define LOG_ERROR(p);
@@ -158,7 +165,7 @@ void Logger::LogTime(){
 
 #endif //LOG_VERBOSITY
 
-
+#ifdef DEBUG
 #define ASSERT_OK(p) \
 do{\
     if (!(p)) {\
@@ -186,5 +193,11 @@ do{\
     Logger::GetLogger().WriteInLogger(dump_string.str());\
     std::cerr<<"logs were put in "<<Logger::GetLogger().filename_;
 
+#else
+    #define ASSERT_OK(p)
+    #define DUMP_CREATION
+    #define CONSOLE_OUTPUT
+    #define FILE_OUTPUT
+#endif //DEBUG
 
 #endif //MY_DUMP_H

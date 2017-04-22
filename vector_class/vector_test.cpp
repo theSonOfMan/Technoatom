@@ -10,9 +10,9 @@
 #include <ctime>
 
 #define TEST(what,case) printf("\nObject: " #what "    test: "#case"\n");
+#define DEBUG
 
-
-#ifndef NDEBUG
+#ifdef DEBUG
 #define ASSERT_TEST(p)\
     if(!(p)){\
         assert(!"Test failure");\
@@ -21,7 +21,7 @@
         printf("Object passed the test\n");\
     }
 #else
-#define ASSERT_TEST(p,TestName)
+#define ASSERT_TEST(p)
 #endif
 
 int main (){
@@ -30,14 +30,14 @@ int main (){
 
     TEST (Vector, NewMemoryAllocated)
     {
-        Vector<int> vect1;
-        ASSERT_TEST(vect1.data_pointer() != NULL);
+            Vector<int> vect1;
+            ASSERT_TEST(vect1.data_pointer() != NULL);
 
-        Vector<int> vect2(46);
-        ASSERT_TEST(vect2.data_pointer() != NULL);
+            Vector<int> vect2(46);
+            ASSERT_TEST(vect2.data_pointer() != NULL);
 
-        Vector<int> copy_of_vect2 = vect2;
-        ASSERT_TEST(copy_of_vect2.data_pointer() != NULL);
+            Vector<int> copy_of_vect2 = vect2;
+            ASSERT_TEST(copy_of_vect2.data_pointer() != NULL);
     }
 
     TEST(Vector, SwapTest)
@@ -87,6 +87,8 @@ int main (){
 //        Vector<int> v;
 //        v.assert_test();
 //    }
-    
+
+    Logger::GetLogger().WriteInLogger("kek # #", 123, 3.0);
+
     return 0;
 }

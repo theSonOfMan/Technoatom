@@ -4,8 +4,11 @@
 
 int main() {
     Stack<int> s;
-    s.push(345);
-    std::cout<<s.top()<<std::endl;
-    std::cout<<s.pop();
+    try{
+        s.top();
+    }
+    catch (my_sp_exception& e){
+        std::cout << e.what() << std::endl;
+    }
     return 0;
 }

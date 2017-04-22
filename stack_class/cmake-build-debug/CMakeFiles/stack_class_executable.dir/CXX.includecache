@@ -17,6 +17,16 @@ sstream
 -
 fstream
 -
+exception
+-
+print_lib/print.h
+/Users/home/Technoatom/print_lib/print.h
+
+/Users/home/Technoatom/print_lib/print.h
+string
+-
+iostream
+-
 
 /Users/home/Technoatom/stack_class/main.cpp
 iostream
@@ -37,7 +47,9 @@ stdlib.h
 -
 cassert
 -
+../my_dump.h
 /Users/home/Technoatom/my_dump.h
+exception
 -
 stack_class.hpp
 /Users/home/Technoatom/stack_class/stack_class.hpp

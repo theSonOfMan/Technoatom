@@ -17,6 +17,16 @@ sstream
 -
 fstream
 -
+exception
+-
+print_lib/print.h
+/Users/home/Technoatom/print_lib/print.h
+
+/Users/home/Technoatom/print_lib/print.h
+string
+-
+iostream
+-
 
 /Users/home/Technoatom/vector_class/vector_class.h
 iostream

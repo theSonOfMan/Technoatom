@@ -6,29 +6,33 @@
 
 template <typename T>
 Vector<T>::Vector(): size_(0){
+    LOG_INFO("entered constructor");
     data_ = new value_type[size_];
+    LOG_INFO("vector created on pointer # ", this);
+//    LOG_INFO(this);
     ASSERT_OK(data_ != NULL)
-    LOG_INFO("VECTOR CREATED");
 }
 
 template <typename T>
 Vector<T>::Vector(size_t vector_size): size_(vector_size){
+    LOG_INFO("entered constructor");
     data_ = new value_type[size_];
     ASSERT_OK(data_ != NULL)
     for (int i=0; i<size_; i++)
         data_[i]=0;
-    LOG_INFO("VECTOR CREATED");
+    LOG_INFO("vector created on pointer # ", this);
+//    LOG_INFO(this);
 }
 
 template <typename T>
 Vector<T>::Vector(const Vector<T> &that):
-        size_ (that.size_)
-{
+        size_ (that.size_) {
+    LOG_INFO("entered copy constructor");
     data_ = new value_type[that.size_];
     ASSERT_OK(data_ != NULL)
     std::copy(that.data_, that.data_ + that.size_, data_);
     ASSERT_OK(data_ != NULL)
-    LOG_INFO("VECTOR COPIED");
+    LOG_INFO("vector copied to pointer");
 }
 
 template <typename T>
@@ -94,14 +98,16 @@ void Vector<T>::print_data() const{
 
 template <typename T>
 const typename Vector<T>::value_type& Vector<T>::operator [] (size_t index) const{
-    ASSERT_OK(index < size_)
+    if (index >= size_)
+        throw my_sp_exception("wrong index in [] operator");
     ASSERT_OK(data_ != NULL)
     return data_[index];
 }
 
 template <typename T>
 typename Vector<T>::value_type& Vector<T>::operator[] (size_t index){
-    ASSERT_OK(index < size_)
+    if (index >= size_)
+        throw my_sp_exception("wrong index in [] operator");
     ASSERT_OK(data_ != NULL)
     return data_[index];
 }
@@ -121,20 +127,24 @@ void Vector<T>::swap(Vector<T> &that) {
 
 template <typename T>
 const Vector<T>& Vector<T>::operator = (const Vector<T>&that) {
+    ASSERT_OK(data_ != NULL)
     if (&that == this) return *this;
     this->~Vector();
     new (this) Vector(that);
     LOG_INFO("VECTOR COPIED");
+    ASSERT_OK(data_ != NULL)
     return *this;
 }
 
 template <typename T>
 Vector<T>& Vector<T>::operator=(Vector<T> && that) {
+    ASSERT_OK(data_ != NULL)
     delete [] data_;
     data_ = that.data_;
     size_ = that.size_;
     that.data_ = nullptr;
     that.size_ = 0;
+    ASSERT_OK(data_ != NULL)
     return *this;
 }
 

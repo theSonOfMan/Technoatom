@@ -11,7 +11,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <cassert>
-#include "/Users/home/Technoatom/my_dump.h"
+#include "../my_dump.h"
+#include <exception>
 
 using std::ofstream;
 using std::endl;
@@ -92,10 +93,6 @@ public:
     //--------------------------------------
     string dump();
 
-    //    void assert_test(){
-    //        size_=capacity_+1;
-    //        ASSERT_OK(ok());
-    //    } 
 private:
     
     static const size_t capacity_=100;

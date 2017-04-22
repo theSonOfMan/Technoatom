@@ -5,7 +5,7 @@ template <typename T>
 const typename Stack<T>::value_type& Stack<T>::top(){
     ASSERT_OK(ok());
     if (this->empty()){
-        ASSERT_OK(!"attempt to top from empty stack");
+        throw my_sp_exception("attempt to top from empty stack");
     }
     ASSERT_OK(ok());
     return data_[size_-1];
@@ -15,12 +15,10 @@ template <typename T>
 bool Stack<T>::push(const value_type& value_to_push){
     ASSERT_OK(ok());
     if (size_>=capacity_) {
-        ASSERT_OK(ok());
         return false;
     }
     data_[size_]=value_to_push;
     size_++;
-    ASSERT_OK(ok());
     return true;
 }
 
@@ -28,9 +26,8 @@ template <typename T>
 typename Stack<T>::value_type& Stack<T>::pop(){
     ASSERT_OK(ok());
     if (this->empty())
-        ASSERT_OK(!"attempt to top from empty stack");
+        throw my_sp_exception("attempt to pop from empty stack");
     --size_;
-    ASSERT_OK(ok());
     return data_[size_];
 }
 
@@ -41,7 +38,6 @@ bool Stack<T>::empty(){
         ASSERT_OK(ok());
         return true;
     }
-    ASSERT_OK(ok());
     return false;
 }
 
