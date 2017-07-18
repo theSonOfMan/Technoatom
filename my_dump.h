@@ -18,6 +18,9 @@ using std::endl;
 using std::ofstream;
 using std::string;
 
+// FIXME: Идея спрашивать у пользоваьеля на каждом шагу, куда писать логи прикольная, но не юзабельная.
+// Ассертов много. Очень много. Еще я бы посоветовал тебе сделать макрос-логгер и вызывать ее из ассерта, когда
+// что-то пошло не так.
 #define ASSERT_OK(p) \
 do{\
     if (!(p)) {\
@@ -33,6 +36,7 @@ do{\
     }\
 } while (false);
 
+// FIXME: добавь в название функции gen
 string dump_file_name() {
     ostringstream file_path;
     file_path<<"../dump";
@@ -50,9 +54,10 @@ string dump_file_name() {
 #define CONSOLE_OUTPUT \
     cout<<dump_string.str();
 
+// FIXME: Открывать-закрывать файл каждый раз - долго. Сделай глобальный лог файл и пиши туда.
 #define FILE_OUTPUT \
     string path = dump_file_name();\
     ofstream fout(path);\
     fout<<dump_string.str();\
-    cout<<"logs were put in "<<path;\
+    cout<<"logs were put in "<<path;\ // FIXME: А вот эта строка не нужна совсем. Вдруг нету консоли, ибо приложение запущено через сеть на другой машине?!
     fout.close();
