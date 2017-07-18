@@ -5,3 +5,5 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES vector_test.cpp)
 add_executable(vector_class_executable ${SOURCE_FILES})
+
+# FIXME: Не клади в репозиторий папки, сгенерированные системой сборки и средой разработки. Они у всех членов команды могут быть разными.
