@@ -6,6 +6,10 @@
 
 #pragma once
 #include <iostream>
+// FIXME: Есть такое внегласное правило: сначала все системные инклюды, а потом - свои. Смысл в том, что если ты сделаешь
+// что-то не так в своем инклюде (к примеру, не поставишь ; после объявления класса), то ошибки ты будешь видить в системном
+// файле и они будут странными. В итоге потратишь время на отладку. Гораздо большая проблема - если будут неявные конфликты имен,
+// например в передефайненных макросах.
 #include "../my_dump.h"
 #include <stdlib.h>
 #include <fstream>
@@ -17,6 +21,7 @@ public:
 
     typedef T value_type; //<type of the value stored in Vector
 
+    // FYI: скорее дефолт, а не стандард.
     //--------------------------------------
     //! Constructor, standard constructor for Vector class
     //--------------------------------------
@@ -63,6 +68,8 @@ public:
     //--------------------------------------
     const Vector<T>& operator = (const Vector<T>&that);
 
+    // FIXME: В целом, у тебя много документации. Я бы даже скзаал, больше, чем нужно. А то, что будет,
+    // если элемента с данным индексом нету - не задокументированно. А это важно.
     //--------------------------------------
     //! A move assignment operator
     //! \param that - a Vector to be moved
@@ -91,13 +98,13 @@ public:
     size_t size() const;
 
     //--------------------------------------
-    //! Returns the pointer on the data
+    //! Returns the pointer on the data // FIXME: pointer to
     //! \return the pointer on the data
     //--------------------------------------
     value_type* data_pointer() const;
 
     //--------------------------------------
-    //! Prints the data of the vector in console
+    //! Prints the data of the vector in console // FIXME: to console
     //--------------------------------------
     void print_data() const;
 
